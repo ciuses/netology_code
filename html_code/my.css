@@ -1,0 +1,13 @@
+body {
+    background-color: #009688;
+    font-family: Arial, sans-serif;
+    font-weight: 400;
+    font-size: 75px;
+    color: #6fd530;
+    margin: 0;
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+}
