@@ -1,0 +1,43 @@
+.form-hint {
+    display: block;
+    font-size: 13px;
+    font-weight: 700px;
+    margin-bottom: 12px;
+}
+
+.field {
+    box-sizing: border-box;
+    width: 640px;
+    border: 1px solid #222222
+    padding: 15px 20px;
+    font-family: inherit;
+}
+
+textarea {
+    min-width: 640px;
+    min-height: 150px;
+
+    max-width: 640px;
+    max-height: 200px;
+}
+
+button {
+    border: none;
+    padding: 15px 55px;
+    color: #DAA520;
+    background-color: #E74C3C;
+    font-family: inherit;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.form-row:nth-child(n+2) {
+    margin-top: 35px;
+}
+
+.field:focus {
+    background: orange;
+    outline: 2px dashed green;
+    outline-offset: -7px;
+
+}

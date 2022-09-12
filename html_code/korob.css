@@ -1,0 +1,8 @@
+.korob {
+    background: aqua;
+    border-style: outset;
+    /*border-width: 5px 10px 15px 20px;*/
+    border-bottom-width:20px;
+    border-top-width: 10px;
+    /*border-bottom-width: 3px;*/
+}
