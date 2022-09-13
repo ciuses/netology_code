@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Форма с данными</title>
+    <link rel="stylesheet" href="form.css">
+</head>
+<body>
+<!--    <input type="text">-->
+<!--    <input type="password">-->
+
+    <form class="form">
+        <div class="form-row">
+            <label class="form-group">
+                <span class="form-hint">Введите ваше имя?</span>
+                <input type="text" class="field" placeholder="Может Олег?" required>
+            </label>
+        </div>
+
+        <div class="form-row">
+            <label class="form-group">
+                <span class="form-hint">Введите ваш email?</span>
+                <input type="email" class="field" placeholder="Возможно test@test.com" required>
+            </label>
+        </div>
+
+        <div class="form-row">
+            <label class="form-group">
+                <span class="form-hint">Ввведите ваше сообщение</span>
+                <textarea class="field" placeholder="Добрый день..." required></textarea>
+            </label>
+        </div>
+
+        <div class="form-row">
+            <label class="form-group">
+                <span class="form-hint">Выберите Ваш город</span>
+                <select class="select">
+                    <option>Колпашево</option>
+                    <option>Стрежевой</option>
+                    <option selected>Томск</option>
+                    <option>Асино</option>
+                </select>
+            </label>
+        </div>
+
+        <div class="form-row">
+
+            <label class="radio-group">
+                <input type="radio" class="radio" name="radio-group">
+                <span class="radio-group-text">Марс</span>
+            </label>
+
+            <label class="radio-group">
+                <input type="radio" class="radio" name="radio-group">
+                <span class="radio-group-text">Венера</span>
+            </label>
+
+        </div>
+
+        <div class="form-row">
+            <label class="checkbox-group">
+                <input type="checkbox" class="checkbox" required>
+                <span class="checkbox-text">Подтвердите согласие с нашими убедениями.</span>
+            </label>
+        </div>
+
+        <div class="form-row">
+            <button class="button">Отправить</button>
+        </div>
+
+
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+.form-hint {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.field {
+    box-sizing: border-box;
+    width: 640px;
+    border: 1px solid #222222;
+    padding: 15px 20px;
+    font-family: inherit;
+}
+
+/* --------------старая версия----------------------
+.field:focus, .select:focus, .button:focus {
+    outline: 2px solid #c53b2d;
+    outline-offset: 5px;
+}*/
+
+.field:focus, .select:focus, .radio:focus ~ .radio-group-text::before, .button:focus {
+    outline: 2px solid #c53b2d;
+    outline-offset: 5px;
+}
+
+.textarea {
+    min-width 640px;
+    max-width 640px;
+    min-height 150px;
+    max-height 200px;
+}
+
+.button {
+    border: none;
+    padding: 15px 55px;
+    color: #ffffff;
+    background-color: #e74c3c;
+    font-family: inherit;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* --------посути скомпоновал выше-------------------
+.button:focus {
+    outline: 2px solid #c53b2d;
+    outline-offset: 5px;
+}*/
+
+.button:hover {
+    background-color: #c53b2d
+}
+
+
+.form-row:nth-child(n+2) {
+    margin-top: 35px;
+}
+
+.form-row:last-child {
+    text-align: center;
+}
+
+.form-group {
+    display: block;
+}
+
+/*______________________новый код___________________________________*/
+
+.select { /* Не работает так как надо*/
+    display: block;
+    box-sizing: border-box;
+    width: 480px:
+    height: 45px;
+
+    padding-left: 20px;
+    margin: 0;
+    border: 1px solid #cbd1d4;
+
+    font-family: inherit;
+    font-size: 14px;
+    color: #333333;
+}
+
+.select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+select {
+	background-image: url("https://netology-code.github.io/resourses/pics/select__min_.svg");
+	background-repeat: no-repeat;
+	background-position: right 5px center;
+}
+
+.radio-group-text::before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+
+    width: 20px;
+    height: 20px;
+
+    background-image: url("https://netology-code.github.io/resourses/pics/radio-no-active.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 20px;
+}
+
+.radio-group {
+    display: inline-block;
+    font-size: 15px;
+}
+
+.radio-group:nth-of-type(n+2) {
+    margin-left: 15px;
+}
+
+.radio:checked ~ .radio-group-text::before {
+    background-image: url("https://netology-code.github.io/resourses/pics/radio-active.svg");
+}
+
+.radio {
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+    width: 1px;
+    height: 1px;
+}
