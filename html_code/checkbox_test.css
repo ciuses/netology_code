@@ -1,0 +1,27 @@
+.switcher {
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+    /*border: 1px solid black;*/
+    border-radius: 50px; /* скругление нужно подбирать по размеру*/
+    background: lightgray;
+}
+
+.control { /* убирает сам чекбокс для красоты*/
+    /*display: none;*/
+}
+
+.switch_pipka {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    /*border: 1px solid black; --заменил на тень*/
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    background: #ffffff;
+}
+
+.control:checked + .switcher { /*основная логика работы бегунка*/
+   text-align: right;
+   background: green;
+}

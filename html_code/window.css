@@ -1,0 +1,63 @@
+.shtorka {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.5);
+    /*display: flex; убрать для работоспособности кнопки*/
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.switch { /*убирается вконце что бы скрыть чекбоксину*/
+    display: none;
+}
+
+.switch:checked + .shtorka { /*основная логика вкл-выкл*/
+    display: flex;
+}
+
+.content {
+    position: relative;
+    z-index; 2; /*убрать если нет .close_mass*/
+    background: #fff;
+    width: 600px;
+    height: 400px;
+    padding: 20px;
+    box-sizing: border-box;
+
+}
+
+.content_destroy {
+    position: absolute;
+    color: red;
+    font-size: 50px;
+    right: -40px;
+    top: -50px;
+    cursor: pointer;
+}
+
+.close_mass { /*закрывает по клику по фону, но не точно*/
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.content_destroy:hover {
+    color: orange;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px;
+    min-width: 100px;
+    border-radius: 10px;
+    background: orange;
+    color: #fff;
+    cursor: pointer;
+}
