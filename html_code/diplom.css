@@ -1,0 +1,198 @@
+@font-face {
+  font-family: opensans;
+  src: url(https://netology-code.github.io/html-2-diploma/sources/fonts/OpenSans-Regular.woff);
+  font-weight: 400;
+  font-style: normal;
+
+  font-family: opensans;
+  src: url(https://netology-code.github.io/html-2-diploma/sources/fonts/OpenSans-Bold.woff);
+  font-weight: 700;
+  font-style: bold;
+}
+
+
+.main__banner {
+  width: 1000px;
+  height: 200px;
+  padding: 20px;
+  background-image: url("https://netology-code.github.io/html-2-diploma/sources/images/banner-bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-color: #000000;
+  position: relative;
+  z-index: 0;
+
+  text-transform: uppercase;
+
+  color: #fff;
+  text-align: center;
+}
+
+.main__banner:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000000;
+  opacity: 0.45;
+  z-index: -1;
+}
+
+/* фон и сам банер */
+
+.header-logo {
+  width: 100px;
+}
+
+.banner_items {
+  display: flex;
+  justify-content: space-around;
+  font-family: opensans, Ariel, sans-serif;
+/*   justify-content: center; */
+}
+
+.menu-list {
+  list-style: none;
+  display: flex;
+}
+
+.menu-link {
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 10px;
+  color: #fff
+}
+
+.main__title {
+  width: 530px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* шапка готова на глаз вроде бы */
+
+.main {
+  display: flex;
+/*   justify-content: space-between; */
+/*   font-family: opensans, Ariel, sans-serif; */
+}
+
+/* общие параметры главного блока */
+
+.posts {
+  border: 2px solid grey;
+  width: 650px; /*792 и ещё 120 для отездасоседнего элемента*/
+
+}
+
+.post {
+  border: 2px solid red;
+  width: 520px; /*766*/
+}
+
+
+.picture {
+  width: 150px; /*380*/
+  height: 150px; /*294*/
+  float: left;
+  margin-right:20px; /*20 между картинкой и текстом*/
+  margin-bottom: 20px;
+}
+
+/* параметры левой части */
+
+.new__posts {
+  border: 2px solid black;
+  width: 300px; /*290*/
+/*   height: 1000px; */
+}
+
+.new__post {
+  border: 2px solid black;
+  width: 250px; /*275*/
+  height: 120px;
+}
+
+.mini_picture {
+  width: 70px; /*70*/
+  height: 70px; /*70*/
+  float: left;
+  margin-right: 10px; /*20*/
+  margin-bottom: 10px;
+}
+
+/* параметры правой части */
+
+.aside {
+  width: 250px;
+/*   height: 300px; */
+  border: 2px solid green;
+}
+
+.search {
+  width: 230px;
+  height: 60px;
+  border: 2px solid yellow;
+  align-items: center;
+}
+
+.field {
+  width: 170px;
+  height: 40px;
+}
+
+.button {
+  width: 40px;
+  height: 40px;
+
+}
+
+.emails {
+  width: 230px;
+  height: 180px;
+  border: 2px solid yellow;
+}
+
+.email {
+  width: 220px;
+  height: 40px;
+}
+
+.button__sub {
+  width: 230px;
+  height: 40px;
+/*   margin-left: 0;
+  margin-right: 0; */
+}
+
+
+.tegs {
+  width: 230px;
+  height: 100px;
+  border: 2px solid yellow;
+}
+
+.thems {
+  width: 230px;
+  height: 180px;
+  border: 2px solid yellow;
+}
+
+/* конец основной части */
+
+
+.footer {
+
+  width: 1000px; /*1168*/
+  height: 75px; /*74*/
+  background-color: #f4f7f6;
+
+}
+
+.social__icon {
+  width: 30px;
+  height: 30px;
+}
