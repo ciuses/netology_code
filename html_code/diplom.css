@@ -4,20 +4,25 @@
   font-weight: 400;
   font-style: normal;
 
-/*   font-family: opensans;
+  /*   font-family: opensans;
   src: url(https://netology-code.github.io/html-2-diploma/sources/fonts/OpenSans-Bold.woff);
   font-weight: 700;
   font-style: bold; */
 }
 
-/* body {
-  margin: 0;
-} */
+body {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  font-family: opensans, Arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
 .main__banner {
-/*   width: 1000px; */
+  /*   width: 1000px; */
   width: 100%;
-  height: 450x;
+/*   height: 450px; */
   padding: 20px;
   background-image: url("https://netology-code.github.io/html-2-diploma/sources/images/banner-bg.jpg");
   background-repeat: no-repeat;
@@ -27,10 +32,11 @@
   position: relative;
   z-index: 0;
 
-/*   text-transform: uppercase;  делал в рамках другой концепции*/
+  /*   text-transform: uppercase;  делал в рамках другой концепции*/
 
   color: #fff;
   text-align: center;
+  font-weight: 700;
 }
 
 .main__banner:after {
@@ -50,14 +56,13 @@
 .banner_items {
   display: flex;
   justify-content: space-around;
-  font-family: opensans, Ariel, sans-serif;
-/*   justify-content: center; */
+/*   font-family: opensans, sans-serif; */
+  /*   justify-content: center; */
 }
 
 .header-logo {
   width: 179px;
   height: 41px;
-
 }
 
 .menu-list {
@@ -70,10 +75,11 @@
   color: inherit;
   margin: 0 35px;
   font-size: 13px;
+/*   font-weight: 700; */
 }
 
 .main__title {
-  width: 680px;
+  width: 688px; /*680px;---по линейке*/
   font-size: 45px;
   margin-left: auto;
   margin-right: auto;
@@ -86,38 +92,36 @@
   margin: 61px;
   font-family: opensans, Ariel, sans-serif;
   /*   width: 800px; */
-/*   margin-top: 50px;
+  /*   margin-top: 50px;
   margin-left: auto;
   margin-right: auto; */
-/*   padding: 50px; */
+  /*   padding: 50px; */
 }
 
 /* --------------------------------------общие параметры главного блока */
 
 .posts {
-/*   border: 2px solid grey; */
-/*   width: 650px; /*792 и ещё 120 для отездасоседнего элемента*/ */
-/*   display: flex; */
-  flex-direction: column;
+  /*   border: 2px solid grey; */
+  /*   width: 650px; /*792 и ещё 120 для отездасоседнего элемента*/
+  /*   display: flex; */
+/*   flex-direction: row; */
   min-width: 780px;
-/*   min-height: 295px; */
-
+  /*   min-height: 295px; */
 }
 
 .post {
-/*   box-sizing: border-box; */
   border: 1px solid red;
+  display: flex;
   width: 100%; /*766*/
-  height: 350px;
-/*   height: 100%; */
-/*   padding-bottom: 90px; */
+  align-items: top;
+  justify-content: center;
 }
 
 .picture {
   width: 380px; /*380*/
   height: 295px; /*294*/
   float: left;
-  margin-right: 30px; /*20 между картинкой и текстом*/
+  margin-right: 20px; /*20 между картинкой и текстом*/
   margin-bottom: 60px;
 }
 
@@ -154,18 +158,22 @@
 .new__posts {
   border: 1px solid black;
   margin-left: 120px;
-  display: flex;
+  /*   display: flex; */
   flex-direction: column;
-/*   width: 290px; */
-/*   height: 1000px; */
-/*   text-align: center; работает но на все элементы*/
-/*   min-width: 275px; */
+  min-width: 300px;
+  /*   height: 1000px; */
+  /*   text-align: center; */
+  /*   min-width: 275px; */
 }
 
 .new__post {
-  border: 1px solid blue;
+/*   border: 1px solid blue; */
+  display: flex;
   width: auto;
-  height: 120px;
+/*   height: 140px; 120px; было */
+/*   text-align: left; */
+  align-items: top;
+  justify-content: center;
 }
 
 .mini_picture {
@@ -183,30 +191,45 @@
 
 /* -----------------------------------------------параметры правой части */
 
+.left__title {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.left__title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  margin: 10px auto;
+  border-bottom: 2px solid #b59f5b;
+}
+
 .aside {
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
 /*   width: 100%; */
-/*   height: 300px; */
-  border: 1px solid green;
-
+  /*   height: 300px; */
+  border: 3px solid green;
 }
 
 .search {
-  display: inline;
-  align-items: center;
-/*   width: 100%; */
-/*   height: 50px; */
-/*   border: 1px solid yellow; */
-/*   align-items: center; */
+  /*   display: inline; */
+  /*   font-size: 0;  костыйль*/
+  /*   width: 100%; */
+  /*   height: 50px; */
+  /*   border: 1px solid yellow; */
+  /*   align-items: center; */
 }
 
 .field {
   box-sizing: border-box;
-  width: 224px;
+  width: 222px;
   height: 50px;
   background-color: #f4f7f6;
   border: none;
+  padding-left: 20px;
 }
 
 .button {
@@ -221,13 +244,19 @@
   background-position: center center;
   cursor: pointer;
 
+  position: relative;
+  bottom: 5px;
+  right: 5px;
 }
 
 .emails {
-  display: block;
-  width: 100%;
-/*   height: 180px; */
-  border: 1px solid yellow;
+/*   display: block; */
+/*   width: 100%; */
+  /*   height: 180px; */
+  border: 1px solid orange;
+/*   align-items: center;
+  justify-content: center; */
+
 
 }
 
@@ -236,9 +265,13 @@
   background-color: #f4f7f6;
   width: 275px;
   height: 50px;
+  padding-left: 20px;
+  border: none;
+
 }
 
 .button__sub {
+  box-sizing: border-box;
   margin-top: 17px;
   width: 275px;
   height: 50px;
@@ -249,68 +282,104 @@
   cursor: pointer;
   border: none;
 
-/*   margin-left: 0;
+  /*   margin-left: 0;
   margin-right: 0; */
 }
 
-.tegs__other {
-  width: 100%;
-/*   height: 100px; */
-  border: 1px solid yellow;
+.additional__tegs {
+/*   width: 100%; */
+  /*   height: 100px; */
+  border: 1px solid red;
 
+}
+
+.t__box {
+  text-align: left;
+}
+
+.additional__teg {
+  border: 1px solid #888888;
+  border-width: 3px;
+  padding: 5px;
+  color: black;
 }
 
 .thems {
   width: 100%;
   /*   height: 180px; */
-  border: 1px solid yellow;
-
+  border: 1px solid blue;
 }
 
 .menu-list__thems {
   list-style-type: none;
+  text-align: left;
 }
 
 .menu-link__thems {
   text-decoration: none;
+  color: black;
+  font-weight: 700;
+}
+
+.menu-link__thems::after {
+  content: "";
+  display: block;
+  width: 200px;
+  margin: 15px 0 15px 0;
+  border-bottom: 2px solid lightgrey;
+
+}
+
+.super {
+  vertical-align: super;
+  color: #b59f5b;
 }
 
 .up {
   text-transform: uppercase;
+  font-weight: 700;
 }
 
 /* -----------------------------------------------конец основной части */
 
 .footer {
-/*   display: flex;
-  margin: 50px; */
+  text-align: center;
+  margin: 61px;
 }
 
 .social {
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 75px;
+  background-color: #f4f7f6;
+}
 
-  width: 800px;
+.social__icon {
+  padding: 30px 10px;
+  width: 24px;
+  height: 24px;
+}
+
+/* Альтернативный вариант
+.link__dribbble {
+  background-image: url(https://netology-code.github.io/html-2-diploma/sources/images/social/001-dribbble.svg);
+}
+
+.link__pinterest {
+  background-image: url(https://netology-code.github.io/html-2-diploma/sources/images/social/002-pinterest.svg);
+}
+
+.link__tumblr {
+  background-image: url(https://netology-code.github.io/html-2-diploma/sources/images/social/003-tumblr.svg);
+} */
+
+.copyright {
+  box-sizing: border-box;
   margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
   height: 75px; /*74*/
-  background-color: #f4f7f6;
-  text-align: center;
-}
-
-.social__icon {
-  width: 30px;
-  height: 30px;
-
-}
-
-.copyright {
-
-  width: 800px;
-/*   margin-top: 50px; */
-  margin-left: auto;
-  margin-right: auto;
-  height: 75px; /*74*/
-/*   background-color: pink; */
-  text-align: center;
-
+  /*   background-color: pink; */
+  padding: 30px;
 }

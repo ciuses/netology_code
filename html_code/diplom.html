@@ -113,7 +113,7 @@
   <!-- ----------------------------------------------правй блок---->
 
   <section class="new__posts">
-    <h4 class="up">Новые посты</h4>
+    <h4 class="left__title up">Новые посты</h4>
 
     <article class="new__post">
       <img src="https://netology-code.github.io/html-2-diploma/sources/images/2.jpg" class="mini_picture" alt="men">
@@ -168,47 +168,49 @@
 
       <form action="#0" class="emails">
         <labl>
-          <h4 class="up">Рассылка</h4>
+          <h4 class="left__title up">Рассылка</h4>
           <input type="email" class="email" placeholder="Ваш email-адрес" required>
           <button type="submit" class="button__sub up">Подписаться</button>
         </labl>
       </form>
 
-      <div class="tegs__other">
-        <h4 class="up">Теги</h4>
-        <a href="#0" class="tegs up">Travel</a>
-        <a href="#0" class="tegs up">Health</a>
-        <a href="#0" class="tegs up">Lifestyle</a>
-        <a href="#0" class="tegs up">Interior</a>
-        <a href="#0" class="tegs up">Art</a>
-        <a href="#0" class="tegs up">Food</a>
-        <a href="#0" class="tegs up">Music</a>
-        <a href="#0" class="tegs up">Fashion</a>
+      <div class="additional__tegs">
+        <h4 class="left__title up">Теги</h4>
+        <div class="t__box">
+          <a href="#0" class="tegs additional__teg up">Travel</a>
+          <a href="#0" class="tegs additional__teg up">Health</a>
+          <a href="#0" class="tegs additional__teg up">Lifestyle</a>
+          <a href="#0" class="tegs additional__teg up">Interior</a>
+          <a href="#0" class="tegs additional__teg up">Art</a>
+          <a href="#0" class="tegs additional__teg up">Food</a>
+          <a href="#0" class="tegs additional__teg up">Music</a>
+          <a href="#0" class="tegs additional__teg up">Fashion</a>
+        </div>
 
       </div>
 
       <div class="thems">
-        <h4 class="up">Темы</h4>
+        <h4 class="left__title up">Темы</h4>
 
         <nav class="menu__thems">
           <ul class="menu-list__thems">
-            <li class="menu-list-item">
-              <a class="menu-link__thems" href="#home">Красота 12</a>
+            <li class="menu-list-item__additional">
+              <a class="menu-link__thems" href="#home">Красота <span class="super">12</span></a>
             </li>
-            <li class="menu-list-item">
-              <a class="menu-link__thems" href="#0">Здоровте 4</a>
+            <li class="menu-list-item__additional">
+              <a class="menu-link__thems" href="#0">Здоровте <span class="super">4</span></a>
             </li>
-            <li class="menu-list-item">
-              <a class="menu-link__thems" href="#0">Образ жизни 145</a>
+            <li class="menu-list-item__additional">
+              <a class="menu-link__thems" href="#0">Образ жизни <span class="super">145</span></a>
             </li>
-            <li class="menu-list-item">
-              <a class="menu-link__thems" href="#0">Музыка 28</a>
+            <li class="menu-list-item__additional">
+              <a class="menu-link__thems" href="#0">Музыка <span class="super">28</span></a>
             </li>
-            <li class="menu-list-item">
-              <a class="menu-link__thems" href="#0">Спорт 62</a>
+            <li class="menu-list-item__additional">
+              <a class="menu-link__thems" href="#0">Спорт <span class="super">62</span></a>
             </li>
-            <li class="menu-list-item">
-              <a class="menu-link__thems" href="#0">Йога 8</a>
+            <li class="menu-list-item__additional">
+              <a class="menu-link__thems" href="#0">Йога <span class="super">8</span></a>
             </li>
           </ul>
         </nav>
@@ -222,15 +224,41 @@
 </main>
 
 <footer class="footer">
-  <div class="social">
-    <img src="https://netology-code.github.io/html-2-diploma/sources/images/social/001-dribbble.svg" class="social__icon" alt="">
-    <img src="https://netology-code.github.io/html-2-diploma/sources/images/social/002-pinterest.svg" class="social__icon" alt="">
-    <img src="https://netology-code.github.io/html-2-diploma/sources/images/social/003-tumblr.svg" class="social__icon" alt="">
-  </div>
 
-  <div class="copyright">
-    <span>Copyright © 2009–2019 City Blog LLC.</span>
-  </div>
+  <address class="social">
+    <img src="https://netology-code.github.io/html-2-diploma/sources/images/social/001-dribbble.svg" class="social__icon" alt="dribbble">
+    <img src="https://netology-code.github.io/html-2-diploma/sources/images/social/002-pinterest.svg" class="social__icon" alt="pinterest">
+    <img src="https://netology-code.github.io/html-2-diploma/sources/images/social/003-tumblr.svg" class="social__icon" alt="tumblr">
+  </address>
+
+  <div class="copyright"><span>Copyright © 2009–2019 City Blog LLC.</span></div>
+
+
+
+  <!--   Альтернатвный вариант -->
+  <!--   <address class="adr">
+    <ul class="socials">
+
+      <li class="socials__item">
+        <a href="#0" class="socials__link link__dribbble">
+          <span class="link__text">dribbble</span>
+        </a>
+      </li>
+
+      <li class="socials__item">
+        <a href="#0" class="socials__link link__pinterest">
+          <span class="link__text">pinterest</span>
+        </a>
+      </li>
+
+      <li class="socials__item">
+        <a href="#0" class="socials__link link__tumblr">
+          <span class="link__text">tumblr</span>
+        </a>
+      </li>
+
+    </ul>
+  </address> -->
 
 </footer>
 </body>

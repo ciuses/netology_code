@@ -1,0 +1,17 @@
+.contener {
+  box-sizing: border-box;
+  width: 500px;
+  padding: 20px;
+}
+
+.child {
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+/*span {
+  display: block;
+  width: 120px;
+  padding: 10px 15px 20px 25px;
+  border: 1px solid #000000;
+}*/
