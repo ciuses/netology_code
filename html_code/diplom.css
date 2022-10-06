@@ -79,6 +79,10 @@ body {
   font-size: 13px;
 }
 
+.menu-link:hover {
+  text-decoration: underline;
+}
+
 .main__title {
   width: 688px; /*680px;---по линейке*/
   font-size: 45px;
@@ -134,10 +138,18 @@ body {
   padding-right: 10px;
 }
 
+.tegs:hover {
+  text-decoration: underline;
+}
+
 .post__title {
   text-decoration: none;
   font-size: 20px;
   line-height: 24px;
+}
+
+.post__title:hover {
+  color: #969080;
 }
 
 .title__link {
@@ -198,6 +210,10 @@ body {
   line-height: 18px;
 }
 
+.additional__text:hover {
+  color: #534c3a;
+}
+
 /* -----------------------------------------------параметры правой части */
 
 .left__title {
@@ -208,9 +224,9 @@ body {
 .left__title::after {
   content: "";
   display: block;
-  width: 60px;
+  width: 66px;
   margin: 10px auto;
-  border-bottom: 2px solid #b59f5b;
+  border-bottom: 3px solid #b59f5b;
 }
 
 .aside {
@@ -228,6 +244,11 @@ body {
   background-color: #f4f7f6;
   border: none;
   padding-left: 20px;
+}
+
+.field:focus {
+  border-right: 1px solid #fbf9f5;
+  border-bottom: 1px solid #ebe7d7;
 }
 
 .button {
@@ -261,6 +282,11 @@ body {
   border: none;
 }
 
+.email:focus {
+  border-right: 1px solid #fbf9f5;
+  border-bottom: 1px solid #ebe7d7;
+}
+
 .button__sub {
   box-sizing: border-box;
   margin-top: 17px;
@@ -274,21 +300,20 @@ body {
   border: none;
 }
 
-.additional__tegs {
-  /*   width: 100%; */
-  /*   height: 100px; */
-  /*   border: 1px solid red; */
-}
-
 .t__box {
   text-align: left;
 }
 
 .additional__teg {
-  border: 1px solid #888888;
+  border: 1px solid #eeeeee;
   border-width: 2px;
-  padding: 5px;
+  padding: 7px 12px;
   color: inherit;
+}
+
+.additional__teg:hover {
+  text-decoration: none;
+  color: #9a9a9a;
 }
 
 .thems {
@@ -308,13 +333,16 @@ body {
   font-weight: 700;
 }
 
+.menu-link__thems:hover {
+  color: #847d6c;
+}
+
 .menu-link__thems::after {
   content: "";
   display: block;
-  width: 200px;
-/*   width: auto; */
+  width: 271px;
   margin: 15px 0 15px 0;
-  border-bottom: 2px solid lightgrey;
+  border-bottom: 1px solid #eeeeee;
 }
 
 .super {
