@@ -22,9 +22,6 @@ body {
 }
 
 .main__banner {
-  /*   width: 1000px; */
-  /*   height: 450px; */
-  width: 100%;
   padding: 20px;
   background-image: url("https://netology-code.github.io/html-2-diploma/sources/images/banner-bg.jpg");
   background-repeat: no-repeat;
@@ -33,12 +30,13 @@ body {
   background-color: #000000;
   position: relative;
   z-index: 0;
-
-  /*   text-transform: uppercase;  делал в рамках другой концепции*/
-
   color: #fff;
   text-align: center;
   font-weight: 700;
+
+  /*   width: 1660px;
+  height: 450px; */
+/*   width: 100%; */
 }
 
 .main__banner:after {
@@ -53,11 +51,12 @@ body {
   z-index: -1;
 }
 
-/* ---------------------------------------------------фон и сам банер */
+/* ------------------------------фон и сам банер */
 
 .banner_items {
   display: flex;
   justify-content: space-around;
+
   /*   font-family: opensans, sans-serif; */
   /*   justify-content: center; */
 }
@@ -86,16 +85,21 @@ body {
 .main__title {
   width: 688px; /*680px;---по линейке*/
   font-size: 45px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 87px auto;
+
+  /*   margin-left: auto;
+  margin-right: auto; */
+/*   margin-top: 110px; */
+/*   margin: auto; */
 }
 
-/* ---------------------------------------шапка готова на глаз вроде бы */
+/* -----------------шапка готова на глаз вроде бы */
 
 .main {
   display: flex;
-  margin: 61px;
+  margin: 64px 230px;
   font-family: opensans, Ariel, sans-serif;
+
   /*   width: 800px; */
   /*   margin-top: 50px;
   margin-left: auto;
@@ -103,23 +107,26 @@ body {
   /*   padding: 50px; */
 }
 
-/* --------------------------------------общие параметры главного блока */
+/* --------------------общие параметры главного блока */
 
 .posts {
-  /*   border: 2px solid grey; */
-  /*   width: 650px; /*792 и ещё 120 для отездасоседнего элемента*/
+  min-width: 780px;
+  margin-left: 15px;
+
+/*   border: 1px solid grey; */
+  /*   width: 650px; 792 и ещё 120 для отездасоседнего элемента*/
   /*   display: flex; */
   /*   flex-direction: row; */
-  min-width: 780px;
   /*   min-height: 295px; */
 }
 
 .post {
-  border: 1px solid red;
   display: flex;
-  width: 100%; /*766*/
-  align-items: top;
   justify-content: center;
+
+  /*   border: 1px solid red; */
+/*   width: 100%; /*780*/
+/*   align-items: top; */
 }
 
 .picture {
@@ -174,51 +181,29 @@ body {
   padding-right: 10px;
 }
 
-/* ------------------------------------------------параметры левой части */
+/* --------------------параметры левой части */
 
 .new__posts {
   margin-left: 120px;
-  flex-direction: column;
-  min-width: 277px;
-  /*   min-width: 300px; */
-  /*   height: 1000px; */
-  /*   text-align: center; */
-  /*   min-width: 275px; */
-  border: 1px solid #008b8b;
-  /*   display: flex; */
+  margin-right: 15px;
+  width: 275px;
+
+  /*   flex-direction: column; */
+/*   min-width: 300px; */
+/*   border: 1px solid #008b8b; */
 }
-
-.new__post {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  /*   background-color: pink; */
-  /*   border: 1px solid blue; */
-}
-
-.mini_picture {
-  width: 70px; /*70*/
-  height: 70px; /*70*/
-  float: left;
-  margin-right: 20px; /*20*/
-  margin-bottom: 20px;
-}
-
-.additional__text {
-  font-size: 14px;
-  line-height: 18px;
-}
-
-.additional__text:hover {
-  color: #534c3a;
-}
-
-/* -----------------------------------------------параметры правой части */
 
 .left__title {
   text-align: center;
-  margin-bottom: 0;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.new__posts > h4 {
+  margin-top: 0;
+/*да, так себе вариант,
+  но nht-child не работает потому что
+  класс общий для нескольких тэгов*/
 }
 
 .left__title::after {
@@ -229,21 +214,60 @@ body {
   border-bottom: 3px solid #b59f5b;
 }
 
+.new__post {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 275px;
+
+  /*   height: 70px; */
+/*   margin-top: 20px; */
+/*   margin-bottom: 10px; */
+  /*   background-color: pink; */
+  /*   border: 1px solid blue; */
+}
+
+.mini_picture {
+  width: 70px; /*70*/
+  height: 70px; /*70*/
+  float: left;
+  margin-right: 20px; /*20*/
+
+  /*   margin-bottom: 20px;  может оно и не надо*/
+}
+
+.additional__text {
+  font-size: 14px;
+  line-height: 18px;
+  margin: 0;
+
+  /*   padding: 0; */
+}
+
+.additional__text:hover {
+  color: #534c3a;
+}
+
+/* -----------------------------дополнительный блок */
+
 .aside {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin-top: 60px;
+
   /*   border: 3px solid green; */
 }
 
 .field {
   box-sizing: border-box;
-  width: 222px;
+  width: 220px;
   height: 50px;
   background-color: #f4f7f6;
   border: none;
   padding-left: 20px;
+  outline: none;
 }
 
 .field:focus {
@@ -280,6 +304,7 @@ body {
   height: 50px;
   padding-left: 20px;
   border: none;
+  outline: none;
 }
 
 .email:focus {
@@ -300,7 +325,7 @@ body {
   border: none;
 }
 
-.t__box {
+.teg__box {
   text-align: left;
 }
 
@@ -318,6 +343,7 @@ body {
 
 .thems {
   width: 100%;
+
   /*   height: 180px; */
   /*   border: 1px solid blue; */
 }
@@ -325,6 +351,7 @@ body {
 .menu-list__thems {
   list-style-type: none;
   text-align: left;
+  padding-left: 0;
 }
 
 .menu-link__thems {
@@ -355,23 +382,26 @@ body {
   font-weight: 700;
 }
 
-/* -----------------------------------------------конец основной части */
+/* -----------------------конец основной части */
 
 .footer {
   text-align: center;
-  margin: 61px;
+  margin: 0 230px;
+
+  /*   margin: 64px; */
 }
 
 .social {
-  margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
-  height: 75px;
   background-color: #f4f7f6;
+
+  /*   margin-top: 50px; */
+  /*   height: 83px; */
 }
 
 .social__icon {
-  padding: 30px 10px;
+  padding: 30px;
   width: 24px;
   height: 24px;
 }
@@ -397,9 +427,10 @@ address > a {
   margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
-  height: 75px; /*74*/
-  background-color: pink;
   padding: 30px;
+
+/*   height: 83px; /*74*/
+/*   background-color: pink; */
 }
 
 .cop {
