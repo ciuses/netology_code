@@ -94,46 +94,28 @@ body {
 
 /* -----------------шапка готова на глаз вроде бы */
 
-.main {
+.all {
   display: flex;
   margin: 64px auto; /*230много*/
+  width: 1200px;
   font-family: opensans, Ariel, sans-serif;
-  width: 1170px;
   padding: 0 15px;
-  /*position: relative; /*------------для асиде дописал*/
-/*   position: absolute; */
+/*   border: 1px solid lightblue; */
 
-
-  border: 1px solid lightblue;
-
-/*     width: 800px; */
-  /*   margin-top: 50px;
-  margin-left: auto;
-  margin-right: auto; */
-  /*   padding: 50px; */
 }
 
 /* --------------------общие параметры главного блока */
 
 .posts {
-  min-width: 780px;
+  width: 780px;
   margin-left: 15px;
 
-  border: 1px solid grey;
-  width: 650px; /*792 и ещё 120 для отездасоседнего элемента*/
-  /*   display: flex; */
-  /*   flex-direction: row; */
-  /*   min-height: 295px; */
-/*   position: relative; */
+/*   border: 1px solid grey; */
 }
 
 .post {
   display: flex;
   justify-content: center;
-
-  /*   border: 1px solid red; */
-  /*   width: 100%; /*780*/
-  /*   align-items: top; */
 }
 
 .picture {
@@ -150,12 +132,7 @@ body {
   justify-content: top; /*тут надо подумать*/
   padding-left: 0;
   margin-top: 0;
-  /*   display: inline-block; */
 }
-
-/* .news__tegs__item {
-  display: inline;
-} */
 
 .tegs {
   text-decoration: none;
@@ -209,13 +186,7 @@ body {
   margin-right: 15px;
   width: 275px;
 
-  /*   flex-direction: column; */
-  /*   min-width: 300px; */
-  border: 1px solid #008b8b;
-
-  /*height: 2000px; /*------------для асиде дописал*/
-
-/*   position: relative; */
+/*   border: 1px solid #008b8b; */
 }
 
 .left__title {
@@ -244,12 +215,6 @@ body {
   align-items: center;
   justify-content: center;
   width: 275px;
-
-  /*   height: 70px; */
-  /*   margin-top: 20px; */
-  /*   margin-bottom: 10px; */
-  /*   background-color: pink; */
-  /*   border: 1px solid blue; */
 }
 
 .mini_picture {
@@ -257,16 +222,12 @@ body {
   height: 70px; /*70*/
   float: left;
   margin-right: 20px; /*20*/
-
-  /*   margin-bottom: 20px;  может оно и не надо*/
 }
 
 .additional__text {
   font-size: 14px;
   line-height: 18px;
   margin: 0;
-
-  /*   padding: 0; */
 }
 
 .additional__text:hover {
@@ -275,29 +236,17 @@ body {
 
 /* -----------------------------дополнительный блок */
 
-.aside {
+.tool__bar {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-/*   margin-top: 60px; */
+  margin-top: 60px;
 
-  border: 1px solid green;
+/*   border: 1px solid green; */
 
   /*------------для асиде дописал*/
-  width: 275px;
-  /*position: relative; */
-/*   position: absolute; */
-/*   right: 0; */
-/*   top: 0;
-  left: 0; */
-
-/*   top: -1900px; */
-/*   left: 980px; */
-
-/*   margin-left: auto; */
-/*   margin-right: 64px; */
-/*------------для асиде дописал*/
+/*   width: 275px; */
 }
 
 .field {
@@ -378,9 +327,6 @@ body {
 
 .thems {
   width: 100%;
-
-  /*   height: 180px; */
-/*   border: 1px solid blue; */
 }
 
 .menu-list__thems {
@@ -421,7 +367,7 @@ body {
 /* -----------------------конец основной части */
 
 .footer {
-  width: 1170px;
+  width: 1200px;
   text-align: center;
   margin: 0 auto;
   padding: 0 15px;
