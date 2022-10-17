@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select</title>
+</head>
+<body>
+
+  <h3>Форма перевода сервиса в Debug режим и обратно.</h3>
+
+  <form action="http://127.0.0.1:63490" method="post" accept-charset="UTF-8" target="_blank">
+
+<!--    <br><br>-->
+
+    <label class="radio-group">
+      <input type="radio" class="radio" name="log_level" value="Info" checked>
+      <span class="radio-group-text">Info</span>
+    </label>
+
+    <label class="radio-group">
+      <input type="radio" class="radio" name="log_level" value="Dedug">
+      <span class="radio-group-text">Dedug</span>
+    </label>
+
+<!--    <br><br><br>-->
+
+<!--    значение multiple позволит множественный выбор-->
+
+    <select class="select" name="service_port">
+      <option value="7037">PT.SP.AccessModel</option>
+      <option value="7009">PT.SP.Bulletins</option>
+      <option value="7004">PT.SP.Configuration</option>
+      <option value="7038">PT.SP.CustomDictionaries</option>
+      <option value="7017">PT.SP.Dictionaries</option>
+      <option value="7028">PT.SP.Entities</option>
+      <option value="7027">PT.SP.EventStoreApi</option>
+      <option value="7012">PT.SP.Fias</option>
+      <option value="7000" selected>PT.SP.GatewayAPI</option>
+      <option value="7003">PT.SP.Incidents</option>
+      <option value="7005">PT.SP.Participants</option>
+      <option value="7030">PT.SP.Plugins.Host</option>
+      <option value="7011">PT.SP.Requests</option>
+      <option value="7015">PT.SP.Sync</option>
+      <option value="7019">PT.SP.Threats</option>
+      <option value="7010">PT.SP.Tickets</option>
+      <option value="7023">PT.SP.Vulnerabilities</option>
+      <option value="7024">PT.SP.Api</option>
+      <option value="7039">PT.SP.EF</option>
+      <option value="7026">PT.SP.Campaigns</option>
+    </select>
+
+    <br><br><br>
+
+    <button class="button">Отправить</button>
+
+  </form>
+
+</body>
+</html>

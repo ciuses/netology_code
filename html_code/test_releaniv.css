@@ -1,15 +1,9 @@
-.model {
-    width: 400px;
-    height: 400px;
-    padding: 20px;
-    border: 1px solid black;
-    position: relative;
+
+
+section {
+    color: red;
 }
 
-.content {
-    position: absolute;
-    top: 0;
-    width: 20px;
-    height: 20px;
-    border: 1px solid green;
+.black {
+    color: black;
 }
