@@ -18,41 +18,26 @@ if city in far_east:
 
 else:
 
-    if amount_of_children > 3:
+    if amount_of_children > 3 and salary_project == 'да' and insurance == 'да':
+        children_bonus = 1
+        salary_bonus = 0.5
+        insurance_bonus = 1.5
+
+
+    elif salary_project == 'да' and insurance == 'да':
+        salary_bonus = 0.5
+        insurance_bonus = 1.5
+
+
+    elif amount_of_children > 3:
         children_bonus = 1
 
-        if salary_project == 'да':
-            salary_bonus = 0.5
 
-            if insurance == 'да':
-                insurance_bonus = 1.5
-                print(
-                    f'Ваша базовая ставка по ипотеке будет {base_rate - children_bonus - salary_bonus - insurance_bonus}%')
-
-            else:
-                print(f'Ваша базовая ставка по ипотеке будет {base_rate - children_bonus - salary_bonus}%')
-
-        else:
-            print(f'Ваша базовая ставка по ипотеке будет {base_rate - children_bonus}%')
+    elif salary_project == 'да':
+        salary_bonus = 0.5
 
 
-    else:
+    elif insurance == 'да':
+        insurance_bonus = 1.5
 
-        if salary_project == 'да':
-            salary_bonus = 0.5
-
-            if insurance == 'да':
-                insurance_bonus = 1.5
-                print(f'Ваша базовая ставка по ипотеке будет {base_rate - salary_bonus - insurance_bonus}%')
-
-            else:
-                print(f'Ваша базовая ставка по ипотеке будет {base_rate - salary_bonus}%')
-
-        else:
-
-            if insurance == 'да':
-                insurance_bonus = 1.5
-                print(f'Ваша базовая ставка по ипотеке будет {base_rate - insurance_bonus}%')
-
-            else:
-                print(f'Ваша базовая ставка по ипотеке будет {base_rate}%')
+    print(f'Ваша базовая ставка по ипотеке будет {base_rate - children_bonus - salary_bonus - insurance_bonus}%')
