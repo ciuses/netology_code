@@ -23,19 +23,15 @@ else:
         salary_bonus = 0.5
         insurance_bonus = 1.5
 
-
     elif salary_project == 'да' and insurance == 'да':
         salary_bonus = 0.5
         insurance_bonus = 1.5
 
-
     elif amount_of_children > 3:
         children_bonus = 1
 
-
     elif salary_project == 'да':
         salary_bonus = 0.5
-
 
     elif insurance == 'да':
         insurance_bonus = 1.5
