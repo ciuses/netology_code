@@ -1,0 +1,462 @@
+/* Добавляем шрифты (regular и bold):  */
+@font-face {
+	font-family: OpenSans;
+	src: url("https://netology-code.github.io/html-2-diploma/sources/fonts/OpenSans-Regular.woff") format("woff"), url("https://netology-code.github.io/html-2-diploma/sources/fonts/OpenSans-Regular.ttf") format("truetype");
+	font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+	font-family: OpenSans;
+  src: url("https://netology-code.github.io/html-2-diploma/sources/fonts/OpenSans-Bold.woff") format("woff"), url("https://netology-code.github.io/html-2-diploma/sources/fonts/OpenSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* сбрасываем стандартные отступы и стили браузера, добавляем border-box и подключаем шрифты:  */
+* {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "OpenSans", Arial, sans-serif;
+}
+
+/* убираем нумерацию списков:  */
+ul, ol {
+  list-style-type: none;
+}
+
+/* убираем подчеркивание у всех ссылок:  */
+a {
+  text-decoration: none;
+}
+
+/* фон шапки и размеры  */
+.header {
+  background-image: url("https://netology-code.github.io/html-2-diploma/sources/images/banner-bg.jpg");
+  background-repeat: no-repeat;
+  background-position:  center center;
+  background-size: cover;
+  background-color: #666666;
+/*   чтобы маска позиционировалась относительно header:  */
+  position: relative;
+}
+
+/* добавление маски - с помощью ::after:  */
+.header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000000;
+  opacity: 0.6;
+}
+
+.header-container {
+/*   расстояние между направляющими:   */
+  width: 1200px;
+  margin: 0 auto;
+  padding: 30px 15px 145px;
+ /*   z-index задаем только контейнеру, а не маске - тогда не надо заморачиваться с остальными z-index! */
+  z-index: 2;
+  position: relative;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-img {
+  width: 180px;
+}
+
+.menu-list {
+  display: flex;
+}
+
+.menu-item:nth-child(n+2) {
+  margin-left: 35px;
+}
+
+.menu-link {
+  font-size: 13px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.menu-link:hover {
+  text-decoration: underline;
+}
+
+.title {
+  width: 680px;
+  font-weight: 700;
+  font-size: 45px;
+  line-height: 75px;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-align: center;
+  margin: 125px auto 0;
+}
+
+.page {
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.main {
+  width: 793px;
+  margin-top: 64px;
+}
+
+.articles {
+  padding-left: 15px;
+}
+
+.article {
+  display: flex;
+  position: relative;
+}
+
+.article:nth-child(n+2){
+  margin-top: 62px;
+}
+
+.article-img {
+  width: 381px;
+  height: 294px;
+  background-color: #eff6f1;
+  margin-right: 30px;
+}
+
+.article-info {
+  width: 367px;
+}
+
+.article-tag {
+  display: flex;
+  font-size: 14px;
+/*   line-height: 40px; */
+  text-transform: uppercase;
+  color: #b59f5b;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.article-tag-list {
+  margin-right: 19px;
+}
+
+.article-tag-item {
+  color: #b59f5b;
+}
+
+.article-tag-item:hover {
+  text-decoration: underline;
+}
+
+.article-title {
+  font-size: 20px;
+  line-height: 24px;
+  text-transform: uppercase;
+  color: #0f0d0e;
+  font-weight: 700;
+  margin-bottom: 37px;
+}
+
+.article-title:hover {
+  color: #b59f5b;
+}
+
+.article-date-author {
+  display: flex;
+  font-size: 12px;
+  margin-bottom: 55px;
+}
+
+.article-date {
+  color: #888888;
+  font-weight: 400;
+  margin-right: 15px;
+}
+
+.article-author {
+  color: #000000;
+  font-weight: 700;
+}
+
+.article-content {
+  font-size: 15px;
+  line-height: 22px;
+  color: #0f0d0e;
+  font-weight: 400;
+}
+
+.aside {
+  width: 287px;
+  margin-top: 64px;
+  padding-right: 15px;
+}
+
+.new-posts {
+  padding: 0 1px;
+}
+
+.new-posts-title, .mailing-title, .tags-title, .themes-title {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #0f0d0e;
+  font-weight: 700;
+  text-align: center;
+}
+
+.new-posts-title::after, .mailing-title::after, .tags-title::after, .themes-title::after {
+  content: "";
+	display: block;
+	width: 65px;
+  height: 3px;
+	margin: 14px auto 0;
+	background-color: #b59f5b;
+  opacity: 0.4;
+}
+
+.new-post {
+  display: flex;
+  margin-top: 29px;
+}
+
+.new-post:nth-child(n+2) {
+  margin-top: 22px;
+}
+
+.new-post-img {
+  width: 70px;
+  height: 70px;
+  background-color: #f4f7f6;
+  margin-right: 20px;
+}
+
+.new-post-date {
+  font-size: 12px;
+  color: #000000;
+  font-weight: 400;
+}
+
+/* ПОЧЕМУ ??? заголовки при взятых из макета значениях font-size и line-height оказываются крупнее, чем в макете? В результате перенос заголовков отличается и размеры статей увеличиваются..  */
+.new-post-title {
+  font-size: 14px;
+  line-height: 18px;
+  text-transform: uppercase;
+  color: #000000;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.new-post-title:hover {
+  color: #b59f5b;
+}
+
+.search {
+  display: flex;
+  margin-top: 60px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.search-field {
+  width: 222px;
+  height: 48px;
+  padding: 18px;
+  border-width: 0;
+  font-size: 13px;
+  color: #000000;
+  font-weight: 400;
+  background-color: #f4f7f6;
+}
+
+.search-field:focus {
+  outline: 1px solid #b59f5b;
+}
+
+.search-button {
+  width: 48px;
+  height: 48px;
+  background-image: url("https://netology-code.github.io/html-2-diploma/sources/images/search.svg");
+  background-size: 18px;
+  background-color: #b59f5b;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border-width: 0;
+}
+
+.search-button:hover {
+  background-color: #323232;
+}
+
+.mailing {
+  margin-top: 62px;
+  padding: 0 1px;
+}
+
+.email {
+  margin-top: 23px;
+  display: flex;
+  flex-direction: column;
+}
+
+.email-field {
+  height: 48px;
+  font-size: 13px;
+  color: #000000;
+  font-weight: 400;
+  background-color: #f4f7f6;
+  border-width: 0;
+  padding: 18px;
+  margin-bottom: 17px;
+}
+
+.email-field:focus {
+  outline: 1px solid #b59f5b;
+}
+
+.email-button {
+  height: 48px;
+  background-color: #b59f5b;
+  border-width: 0;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.email-button:hover {
+  background-color: #323232;
+}
+
+.tags {
+  margin-top: 62px;
+  padding: 0 1px;
+}
+
+.tag-list {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tag-item{
+  border: 3px solid #eeeeee;
+/*   значения padding по горизонтали в разных тегах - от 10px до 16px, но при 13 не встает ровно */
+  padding: 7px 12px;
+  margin-right: 5px;
+  margin-bottom: 6px;
+}
+
+.tag-item:hover {
+  border: 3px solid #b59f5b;
+}
+
+.tag-link {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #0f0d0e;
+  font-weight: 700;
+}
+
+.themes {
+  margin-top: 62px;
+  padding: 0 1px 0 2px;
+}
+
+.theme-list {
+  margin-top: 8px;
+}
+
+.theme-link {
+  font-size: 14px;
+  color: #000000;
+  font-weight: 700;
+  display: block;
+  height: 47px;
+  border-bottom: 1px solid #eeeeee;
+  padding-top: 17px;
+  padding-bottom: 14px;
+}
+
+.theme-link:hover {
+  color: #b59f5b;
+}
+
+.score {
+  font-size: 12px;
+  color: #b59f5b;
+  font-weight: 700;
+  margin-left: 5px;
+  vertical-align: top;
+}
+
+.footer {
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 64px 15px 40px;
+}
+
+.social-list {
+  height: 83px;
+  background-color: #f4f7f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-item:nth-of-type(n + 2) {
+  margin-left: 30px;
+}
+
+.social-link{
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 20px;
+}
+
+.social-link-dribbble {
+  background-image: url("https://netology-code.github.io/html-2-diploma/sources/images/social/001-dribbble.svg");
+}
+
+.social-link-pinterest {
+  background-image: url("https://netology-code.github.io/html-2-diploma/sources/images/social/002-pinterest.svg");
+}
+
+.social-link-tumblr {
+  background-image: url("https://netology-code.github.io/html-2-diploma/sources/images/social/003-tumblr.svg");
+}
+
+.copyrighting {
+  margin-top: 74px;
+  text-align: center;
+}
+
+.copyrighting-link {
+  font-size: 12px;
+  color: #999999;
+  font-weight: 700;
+}
