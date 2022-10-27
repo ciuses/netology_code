@@ -10,4 +10,7 @@ if len(boys) == len(girls):
         print(f'{boy} и {girl}')
 
 else:
-    print(f'Количество мальчиков {len(boys)} и девочек {len(girls)} не совпадают!')
+    if len(boys) > len(girls):
+        print(f'Нехватает {len(boys) - len(girls)} девочек!')
+    else:
+        print(f'Нехватает {len(girls) - len(boys)} мальчиков!')
