@@ -8,6 +8,7 @@ ids = {'user1': [213, 213, 213, 15, 213],
 #        my_list += my_value
 # print(list(set(my_list)))
 
+#нормальный вариант
 unic_id = set([
        geo_id
        for my_value in ids.values()
