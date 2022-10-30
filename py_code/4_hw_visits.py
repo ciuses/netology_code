@@ -11,10 +11,11 @@ geo_logs = [
     {'visit10': ['Архангельск', 'Россия']}
 ]
 
-russian_lis = [
+russian_list = [
     {my_key: my_value} for row in geo_logs
     for my_key, my_value in row.items()
     if my_value[1] == 'Россия'
 ]
 
-print(russian_lis)
+for element in russian_list:
+    print(element)
