@@ -45,6 +45,39 @@ def chek_shelf(number_shelf='1'):
         return False
 
 
+def del_command_documents(number_doc='10006'):
+    for my_string in documents:
+        if number_doc in my_string.values():
+            documents.remove(my_string)
+            return documents
+
+    else:
+        return 'Нечего удалять!'
+
+
+def del_command_directories(number_doc='10006'):
+    for my_key, my_value in directories.items():
+        if number_doc in my_value:
+            my_value.remove(number_doc)
+            return directories
+    else:
+        return 'Нечего удалять!'
+
+
+def move_command(number_doc='10006', number_shelf='1'):
+    for my_key, my_value in directories.items():
+        if number_doc in my_value:
+            my_value.pop(my_value.index(number_doc))
+
+    directories[number_shelf].append(number_doc)
+    return directories
+
+
+def add_shelf_comand(number_shelf='99'):
+    directories[number_shelf] = []
+    return directories
+
+
 if __name__ == '__main__':
 
     while True:
@@ -83,26 +116,21 @@ if __name__ == '__main__':
             else:
                 print('Такой полки не существует: ')
 
-# def secretary(comand):
-#     if comand == 'p':
-#         number = input('Введите номер документа: ')
-#         for my_string in documents:
-#             for my_key, my_value in my_string.items():
-#                 if number in my_value:
-#                     print(my_string['name'])
-#
-#     elif comand == 's':
-#         number = input('Введите номер документа: ')
-#         for my_key, my_value in directories.items():
-#             if number in my_value:
-#                 print(my_key)
-#
-#     elif comand == 'l':
-#         for my_string in documents:
-#             for my_key, my_value in my_string.items():
-#                 print(my_value)
+        elif my_command == 'd':
+            number_doc = input('Введите номер документа: ')
+            print(del_command_documents(number_doc))
+            print(del_command_directories(number_doc))
 
-# add_command(type_doc='voennik', number_doc='12345678', name_usr='Солдат Сержантов', number_shelf='3')
-# print(person())
-# print(shelf())
-# print(list_command())
+
+        elif my_command == 'm':
+            number_doc = input('Введите номер документа: ')
+            number_shelf = input('Введите номер полки для хранения дела: ')
+
+            if shelf() and chek_shelf():
+                print(move_command(number_doc=number_doc, number_shelf=number_shelf))
+
+        elif my_command == 'as':
+            number_shelf = input('Введите номер полки для хранения дела: ')
+
+            if shelf() != 'True':
+                print(add_shelf_comand(number_shelf=number_shelf))
