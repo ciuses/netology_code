@@ -11,11 +11,22 @@ geo_logs = [
     {'visit10': ['Архангельск', 'Россия']}
 ]
 
-russian_list = [
-    {my_key: my_value} for row in geo_logs
-    for my_key, my_value in row.items()
-    if my_value[1] == 'Россия'
-]
+# russian_list = [
+#     {my_key: my_value} for row in geo_logs
+#     for my_key, my_value in row.items()
+#     if my_value[1] == 'Россия'
+# ]
+
+russian_list = []
+
+for st in geo_logs:
+    el = st.values()
+    print(type(el), el['one'])
+
+    # for k, v in st.items():
+    #     # print(k, v[1])
+    #     if 'Россия' in v[-1]:
+    #         russian_list.append(st)
 
 for element in russian_list:
     print(element)
