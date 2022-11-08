@@ -101,7 +101,6 @@ if __name__ == '__main__':
         elif my_command == 'l':
             print(list_command())
 
-
         elif my_command == 'a':
 
             type_doc = input('Введите тип документа: ')
@@ -120,7 +119,6 @@ if __name__ == '__main__':
             number_doc = input('Введите номер документа: ')
             print(del_command_documents(number_doc))
             print(del_command_directories(number_doc))
-
 
         elif my_command == 'm':
             number_doc = input('Введите номер документа: ')
