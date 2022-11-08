@@ -90,7 +90,6 @@ class Student:
     def add_courses(self, course_name):
         self.finished_courses.append(course_name)
 
-
     def put_two(self, lecturer, course, grade):
         if isinstance(lecturer, Lecturer) \
                 and course in lecturer.courses_attached \
@@ -103,6 +102,12 @@ class Student:
         else:
             return 'Ошибка'
 
+    def __str__(self):
+        return f'Имя: {self.name}\n' \
+               f'Фамилия: {self.surname}\n' \
+               f'Средняя оценка за домашнее задание: {sum(self.grades["Python"]) / len(self.grades["Python"])}\n' \
+               f'Курсы в процесе изучения: {self.courses_in_progress}\n' \
+               f'Завершённые курсы: {self.finished_courses}\n'
 
 
 class Mentor:
@@ -115,7 +120,10 @@ class Mentor:
 class Reviewer(Mentor):
 
     def rate_hw(self, student, course, grade):
-        if isinstance(student, Student) and course in self.courses_attached and course in student.courses_in_progress:
+        if isinstance(student, Student) \
+                and course in self.courses_attached \
+                and course in student.courses_in_progress:
+
             if course in student.grades:
                 student.grades[course] += [grade]
             else:
@@ -123,34 +131,67 @@ class Reviewer(Mentor):
         else:
             return 'Ошибка'
 
-# best_student = Student('Михаил', 'Ломоносов', 'male')
-# best_student.courses_in_progress += ['Python']
-#
-# cool_mentor = Reviewer('СуперПрепод', 'Гениев')
-# cool_mentor.courses_attached += ['Python']
-#
-# cool_mentor.rate_hw(best_student, 'Python', 10)
-# cool_mentor.rate_hw(best_student, 'Python', 10)
-#
-# print(best_student.grades)
-# print(dir(cool_mentor))
-# print(cool_mentor.__dict__)
+    def __str__(self):
+        return f'Имя: {self.name}\n' \
+               f'Фамилия: {self.surname}'
+
 
 class Lecturer(Mentor):
     def __init__(self, name, surname):
         super().__init__(name, surname)
         self.lecturer_grades = {}
 
+    def average_rating(self):
+        estimations = []
+        for cors, estimation in self.lecturer_grades.items():
+            res = sum(estimation) / len(estimations)
+            estimations.append(res)
+            return estimations
 
-# another_student = Student('Студентка', 'Клёвая', 'female')
-# another_student.courses_in_progress += ['Баньщики']
-#
-# another_lecturer = Lecturer('Мария Ивановна', 'Иванова')
-# another_lecturer.courses_attached += ['Баньщики']
-# # print(another_lecturer.name, another_lecturer.surname)
-#
-# another_student.put_two(another_lecturer, 'Баньщики', 100)
-# another_student.put_two(another_lecturer, 'Баньщики', 100)
-# another_student.put_two(another_lecturer, 'Баньщики', 100)
-#
+    def __str__(self):
+        return f'Имя: {self.name}\n' \
+               f'Фамилия: {self.surname}\n' \
+               f'Средняя оценка за лекции: {sum(self.lecturer_grades["Баньщики"]) / len(self.lecturer_grades["Баньщики"])}'
+
+
+'''создание студента и назначение ему курса'''
+best_student = Student('Михаил', 'Ломоносов', 'male')
+best_student.courses_in_progress += ['Python']
+
+'''создание создание ревьюера и назначение для него курса'''
+cool_mentor = Reviewer('СуперПрепод', 'Гениев')
+cool_mentor.courses_attached += ['Python']
+
+'''оценка студента ревьюером'''
+cool_mentor.rate_hw(best_student, 'Python', 10)
+cool_mentor.rate_hw(best_student, 'Python', 10)
+
+# print(best_student.grades)
+# print(dir(cool_mentor))
+# print(cool_mentor.__dict__)
+
+'''создание студента и назначение ему курса'''
+another_student = Student('Студентка', 'Клёвая', 'female')
+another_student.courses_in_progress += ['Баньщики']
+
+'''создание лектора и назначение курса'''
+another_lecturer = Lecturer('Мария Ивановна', 'Иванова')
+another_lecturer.courses_attached += ['Баньщики']
+
+'''блок оценки лектора судентом'''
+another_student.put_two(another_lecturer, 'Баньщики', 2)
+another_student.put_two(another_lecturer, 'Баньщики', 7)
+another_student.put_two(another_lecturer, 'Баньщики', 5)
+
+'''блок добавления оценок и лекций студенту'''
+another_student.grades['Python'] = [3, 6, 9]
+another_student.courses_in_progress += ['Python']
+another_student.courses_in_progress += ['Ruby']
+another_student.courses_in_progress += ['Java']
+another_student.finished_courses += ['Повар']
+
 # print(another_lecturer.lecturer_grades)
+
+# print(cool_mentor)
+print(another_lecturer)
+# print(another_student)
