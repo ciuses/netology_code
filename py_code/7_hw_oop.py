@@ -107,14 +107,14 @@ class Reviewer(Mentor):
 class Lecturer(Mentor):
     def __init__(self, name, surname):
         super().__init__(name, surname)
-        self.lecturer_grades = {}
+        self.grades = {}
 
     def average_rating(self):
-        if not self.lecturer_grades:
+        if not self.grades:
             return 0
 
         estimations = []
-        for estimation in self.lecturer_grades.values():
+        for estimation in self.grades.values():
             estimations.extend(estimation)
 
         return sum(estimations) / len(estimations)
@@ -151,10 +151,10 @@ class Student:
                 and course in lecturer.courses_attached \
                 and course in self.courses_in_progress:
 
-            if course in lecturer.lecturer_grades:
-                lecturer.lecturer_grades[course] += [grade]
+            if course in lecturer.grades:
+                lecturer.grades[course] += [grade]
             else:
-                lecturer.lecturer_grades[course] = [grade]
+                lecturer.grades[course] = [grade]
         else:
             return 'Ошибка'
 
@@ -185,6 +185,17 @@ class Student:
         return self.average_rating() <= other.average_rating()
 
 
+def course_average(course_name: str, person_list: list) -> float:
+    all_grades = []
+    for person in person_list:
+
+        all_grades.extend(person.grades[course_name])
+
+    return sum(all_grades) / len(all_grades)
+
+
+
+
 if __name__ == '__main__':
     # '''создание студента и назначение ему курса'''
     # best_student = Student('Михаил', 'Ломоносов', 'male')
@@ -203,29 +214,29 @@ if __name__ == '__main__':
     # print(cool_mentor.__dict__)
 
     '''создание студента и назначение ему курса'''
-    # another_student = Student('Студентка', 'Клёвая', 'female')
-    # another_student.courses_in_progress += ['Python']
-    # another_student.courses_in_progress += ['Ruby']
-    # another_student.courses_in_progress += ['Java']
-    # another_student.finished_courses += ['Повар']
-    # another_student.courses_in_progress += ['Баньщики']
-    #
-    # another_student.grades['Python'] = [3, 6, 9]
-    # another_student.grades['Ruby'] = [1, 1, 1]
-    # another_student.grades['Java'] = [1, 1, 1]
+    another_student = Student('Студентка', 'Клёвая', 'female')
+    another_student.courses_in_progress += ['Python']
+    another_student.courses_in_progress += ['Ruby']
+    another_student.courses_in_progress += ['Java']
+    another_student.finished_courses += ['Повар']
+    another_student.courses_in_progress += ['Баньщики']
+
+    another_student.grades['Python'] = [3, 6, 9]
+    another_student.grades['Ruby'] = [10, 10, 10]
+    another_student.grades['Java'] = [1, 1, 1]
 
     '''ещё один студень'''
-    # middle_stud = Student('Парняга', 'Парняговый', 'male')
-    #
-    # middle_stud.courses_in_progress += ['Python']
-    # middle_stud.courses_in_progress += ['Ruby']
-    # middle_stud.courses_in_progress += ['Java']
-    # middle_stud.finished_courses += ['Повар']
-    # middle_stud.courses_in_progress += ['Баньщики']
-    #
-    # middle_stud.grades['Python'] = [3, 6, 9]
-    # middle_stud.grades['Ruby'] = [1, 1, 1]
-    # middle_stud.grades['Java'] = [1, 1, 1]
+    middle_stud = Student('Парняга', 'Парняговый', 'male')
+
+    middle_stud.courses_in_progress += ['Python']
+    middle_stud.courses_in_progress += ['Ruby']
+    middle_stud.courses_in_progress += ['Java']
+    middle_stud.finished_courses += ['Повар']
+    middle_stud.courses_in_progress += ['Баньщики']
+
+    middle_stud.grades['Python'] = [3, 6, 9]
+    middle_stud.grades['Ruby'] = [10, 10, 10]
+    middle_stud.grades['Java'] = [1, 1, 1]
 
     #
     # '''создание лектора и назначение курса'''
@@ -237,7 +248,7 @@ if __name__ == '__main__':
     # another_student.put_two(another_lecturer, 'Баньщики', 7)
     # another_student.put_two(another_lecturer, 'Баньщики', 5)
     #
-    # print(another_lecturer.lecturer_grades)
+    # print(another_lecturer.grades)
 
     # print(cool_mentor)
     # print(another_lecturer)
@@ -249,19 +260,27 @@ if __name__ == '__main__':
 
     '''лектор Сократ'''
     sokrat = Lecturer('Сократ', 'Философов')
-    sokrat.lecturer_grades['Философия'] = [1, 1, 1]
-    sokrat.lecturer_grades['Пьянство'] = [2, 2, 2]
-    sokrat.lecturer_grades['История'] = [3, 3, 3]
+    sokrat.grades['Философия'] = [1, 1, 1]
+    sokrat.grades['Пьянство'] = [2, 2, 2]
+    sokrat.grades['История'] = [3, 3, 3]
     '''лектор Николо Макиавелли'''
     makiavelli = Lecturer('Николо', 'Макиавелли')
-    makiavelli.lecturer_grades['Философия'] = [1, 1, 1]
-    makiavelli.lecturer_grades['Пьянство'] = [2, 10, 2]
-    makiavelli.lecturer_grades['История'] = [3, 3, 3]
+    makiavelli.grades['Философия'] = [1, 1, 1]
+    makiavelli.grades['Пьянство'] = [2, 10, 2]
+    makiavelli.grades['История'] = [3, 3, 3]
+    #
+    # print(sokrat)
+    # print(makiavelli)
+    # print(sokrat == makiavelli)
+    # print(sokrat > makiavelli)
+    # print(sokrat < makiavelli)
 
-    print(sokrat)
-    print(makiavelli)
-    print(sokrat == makiavelli)
-    print(sokrat > makiavelli)
-    print(sokrat < makiavelli)
 
 
+    '''Проверка среднего бала для списка студиков. Да это же тот самый полиморфизм же ж.'''
+    average = course_average('Ruby', [another_student, middle_stud])
+    print(average)
+
+    '''Проверка среднего бала для списка лекторов. Да это же тот самый полиморфизм же ж.'''
+    average = course_average('Пьянство', [sokrat, makiavelli])
+    print(average)
