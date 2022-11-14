@@ -26,7 +26,8 @@ class Income:
         print(f'My ineger is {int}')
 
 
-my_income = Income()
+my_income = Income(45)
+print(my_income.test(555))
 print(my_income.test('test'))
 
 # print(my_income.isinstans(Income))
