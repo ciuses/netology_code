@@ -16,7 +16,7 @@ some_pers.__dict__['age'] = 30
 print(some_pers.age + len(some_pers.__dict__))
 
 class Income:
-    def __int__(self, id_):
+    def __init__(self, id_):
         self.id_ = id_
 
     def test(self, word):
