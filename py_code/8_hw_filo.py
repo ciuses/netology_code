@@ -1,5 +1,4 @@
 def recipe_from_file(path: str) -> dict:
-
     filo = open(path, 'rt', encoding='utf8')
 
     cook_book = {}
@@ -28,13 +27,30 @@ def recipe_from_file(path: str) -> dict:
                                     'quantity': quantity_without_space,
                                     'measure': measure_without_space})
 
-
-    return cook_book
-
         # elif string[0].isdigit():
         #     # print(string)
         #     pass
 
+    return cook_book
 
 
-print(recipe_from_file('other\\recipes.txt'))
+def get_shop_list_by_dishes(dishes: list, person_count: int, path_to_recipe: str) -> dict:
+    shop_list = {}
+
+    for dishe in dishes:
+        all_dishes = recipe_from_file(path_to_recipe)
+        my_dishe = all_dishes[dishe]
+        for ingredients_for_dishe in my_dishe:
+            shop_list[ingredients_for_dishe['ingredient_name']] = {'measure': ingredients_for_dishe['measure'],
+                                                                   'quantity': int(ingredients_for_dishe[
+                                                                                       'quantity']) * person_count}
+
+    return shop_list
+
+
+if __name__ == '__main__':
+    # print(recipe_from_file('other\\recipes.txt'))
+    # print(get_shop_list_by_dishes(['Утка по-пекински', 'Фахитос'], 10))
+    di = get_shop_list_by_dishes(['Утка по-пекински', 'Фахитос'], 10, 'other\\recipes.txt')
+    for k, v in di.items():
+        print(k, v)
