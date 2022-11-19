@@ -1,36 +1,40 @@
-filo = open('other\\recipes.txt', 'rt', encoding='utf8')
+def recipe_from_file(path: str) -> dict:
 
-cook_book = {}
-list_of_dishes = []
+    filo = open(path, 'rt', encoding='utf8')
 
-while True:
+    cook_book = {}
+    list_of_dishes = []
 
-    string = filo.readline()
-    # string.rstrip('\\n')
+    while True:
 
-    if not string:
-        break
+        string = filo.readline()
 
-    elif string[0].isalpha() and '|' not in string:
-        print(string)
-        # string.replace("\\n", "")
-        list_of_dishes.append(string)
-        cook_book[string] = []
+        if not string:
+            break
+
+        elif string[0].isalpha() and '|' not in string:
+            string_without_n = string.replace('\n', '')
+            list_of_dishes.append(string_without_n)
+            cook_book[string_without_n] = []
+
+        elif '|' in string:
+            string_without_n = string[:-1]
+            ingredient, quantity, measure = string_without_n.split('|')
+            ingredient_without_space = ingredient.strip()
+            quantity_without_space = quantity.strip()
+            measure_without_space = measure.strip()
+            dish = list_of_dishes[-1]
+            cook_book[dish].append({'ingredient_name': ingredient_without_space,
+                                    'quantity': quantity_without_space,
+                                    'measure': measure_without_space})
+
+
+    return cook_book
+
+        # elif string[0].isdigit():
+        #     # print(string)
+        #     pass
 
 
 
-    elif string[0].isdigit():
-        # print(string)
-        pass
-
-    elif '|' in string:
-        ingredient, quantity, measure = string.split('|')
-        dish = list_of_dishes[-1]
-        cook_book[dish].append({'ingredient_name': ingredient, 'quantity': quantity, 'measure': measure})
-
-
-
-# print(cook_book)
-
-for d, ing in cook_book.items():
-    print(d, ing)
+print(recipe_from_file('other\\recipes.txt'))
