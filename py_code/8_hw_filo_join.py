@@ -16,7 +16,6 @@ def write_to_filo(filo_name: str, filo_len: str, list_of_lines: list):
             file_object.write(line)
 
 
-
 def write_control(list_obj_and_len: str = prepare_your_objects()):
     for filo, filo_len in list_obj_and_len:
         filo_path = filo.name
