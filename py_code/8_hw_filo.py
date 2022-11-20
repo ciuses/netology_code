@@ -50,6 +50,7 @@ def get_shop_list_by_dishes(dishes: list, person_count: int, path_to_recipe: str
 
 if __name__ == '__main__':
     print(recipe_from_file('other\\recipes.txt'))
-    di = get_shop_list_by_dishes(['Утка по-пекински', 'Фахитос'], 10, 'other\\recipes.txt')
-    for k, v in di.items():
-        print(k, v)
+    dict_shop_list = get_shop_list_by_dishes(['Утка по-пекински', 'Фахитос'], 10, 'other\\recipes.txt')
+
+    for dishe, quantity in dict_shop_list.items():
+        print(dishe, quantity)
