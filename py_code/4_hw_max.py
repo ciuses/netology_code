@@ -16,3 +16,4 @@ stats2 = {'zzzz': 56565, 'yandex': 120, 'vk': 115, 'email': 42, 'ok': 98}
 
 
 print(max(stats2)) # берёт по ascii символам
+print(max(stats2.values()))
