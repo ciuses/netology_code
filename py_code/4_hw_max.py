@@ -6,4 +6,9 @@ max_sales = [
     if my_value == max(stats.values())
 ]
 
-print(max_sales[0])
+# print(max_sales[0])
+
+# альтернативное решение
+for company, any_digit in stats.items():
+    if any_digit == max(stats.values()):
+        print(company, any_digit)
