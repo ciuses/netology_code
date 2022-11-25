@@ -6,4 +6,4 @@ For education on **Netology**
 
 Типо тест markdown: `print('Hellow world')`
 
-Ссылка на: [Телега](https://t.me/ciuses)
+Ссылка на: [телегу](https://t.me/ciuses)
