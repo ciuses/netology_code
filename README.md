@@ -6,7 +6,7 @@ For education on **Netology**
 
 ~~Типо тест~~ markdown: `print('Hello world')`
 
-```pyton
+```python
 print('Hello another world')
 ```
 
