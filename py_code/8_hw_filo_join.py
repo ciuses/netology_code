@@ -10,7 +10,7 @@ def prepare_your_objects(path_to_fils: str = 'other\\files\\') -> list:
 
 
 def write_to_filo(filo_name: str, filo_len: str, list_of_lines: list):
-    with open('final_filo.txt', 'a', encoding='utf8') as file_object:
+    with open('other\\final_filo.txt', 'a', encoding='utf8') as file_object:
         file_object.write(f'\n{filo_name}\n{filo_len}\n')
         for line in list_of_lines:
             file_object.write(line)
