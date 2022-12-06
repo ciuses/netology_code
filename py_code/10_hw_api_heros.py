@@ -2,8 +2,6 @@ import requests
 
 base = 'https://akabab.github.io/superhero-api/api'
 all = f'{base}/all.json'
-power = f'{base}/powerstats/17.json'
-
 
 def get_name_and_id(hero_name: str) -> tuple:
     resp = requests.get(all)
