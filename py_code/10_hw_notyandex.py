@@ -21,10 +21,10 @@ class YaUploader:
 
         return False
 
-    def upload_filo(self, file_path: str):
+    def upload_filo(self, file_path: str) -> bool:
         href = self.upload_link(file_path).get('href')
         if not href:
-            return
+            return False
         with open(file_path, 'rb') as filo:
             resp = requests.put(href, data=filo)
             if resp.status_code == 201:
