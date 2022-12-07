@@ -17,7 +17,7 @@ from tokenators import ya_api_disk_token as token
 #     json.dump(r2.json(), filo, indent=4, ensure_ascii=False)
 
 class YaUploader:
-    link_for_fails = 'https://cloud-api.yandex.net:443/v1/disk/resources/files'
+    link_for_fails = 'https://cloud-api.yandex.net:443/v1/disk/resources/files' # для чего эта ссылка?
     link_for_upload = 'https://cloud-api.yandex.net:443/v1/disk/resources/upload'
 
     def __init__(self, token: str):
@@ -30,9 +30,11 @@ class YaUploader:
     def upload_link(self, file_path: str) -> dict:
         param = {'path': file_path, 'overwrite': 'true'}
         resp = requests.get(self.link_for_upload, params=param, headers=self.head)
-        resp_dict = resp.json()
-        print(resp_dict)
-        return resp_dict
+        if resp.status_code == 200:
+            resp_dict = resp.json()
+            return resp_dict
+
+        return False
 
     def upload_filo(self, file_path: str):
         href = self.upload_link(file_path).get('href')
@@ -55,7 +57,12 @@ if __name__ == '__main__':
     # uploader = YaUploader(token)
     # result = uploader.upload(path_to_file)
 
-    client = YaUploader(token)
+    # client = YaUploader(token)
     # client.upload_link(path_to_file)
     # client.upload_filo(path_to_file)
-    client.upload_filo(another_path)
+    # client.upload_filo(another_path)
+
+    cli = YaUploader(token)
+    cli.upload_filo(another_path)
+
+    #todo сделать загрузку в нужную папку
