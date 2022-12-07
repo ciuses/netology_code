@@ -1,20 +1,5 @@
 import requests
-import json
 from tokenators import ya_api_disk_token as token
-
-
-# link = 'https://cloud-api.yandex.net:443/v1/disk'
-# link2 = 'https://cloud-api.yandex.net:443/v1/disk/resources'
-#
-# head = {'Authorization': f'OAuth {token}', 'Content-Type': 'application/json'}
-# par = {'path': 'netology'}
-# resp = requests.get(link2, headers=head, params=par)
-# di = resp.json()
-# print(resp, di)
-# # print(token)
-
-# with open('other\\heros.json', 'w', encoding='utf8') as filo:
-#     json.dump(r2.json(), filo, indent=4, ensure_ascii=False)
 
 class YaUploader:
     link_for_fails = 'https://cloud-api.yandex.net:443/v1/disk/resources/files' # для чего эта ссылка?
