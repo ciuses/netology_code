@@ -1,64 +1,56 @@
--- все, что начинается с двух дефисов - это комментарий
-
--- один к одному (1 вариант)
-
---CREATE TABLE IF NOT EXISTS Student (
---	email VARCHAR(80) PRIMARY KEY,
---	name VARCHAR(40) NOT NULL,
---	password VARCHAR(128) NOT NULL
---);
---
---CREATE TABLE IF NOT EXISTS StudentInfo (
---	email VARCHAR(80) PRIMARY KEY REFERENCES Student(email),
---	birthday date,
---	city VARCHAR(60),
---	roi TEXT
---);
-
--- один к одному (2 вариант)
-
-CREATE TABLE IF NOT EXISTS Student (
+CREATE TABLE IF NOT EXISTS genres (
 	id SERIAL PRIMARY KEY,
-	email VARCHAR(80) UNIQUE NOT NULL,
-	name VARCHAR(40) NOT NULL,
-	PASSWORD VARCHAR(128) NOT NULL
+	genres_name VARCHAR(60) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS StudentInfo (
-	id INTEGER PRIMARY KEY REFERENCES Student(id),
-	birthday date,
-	city VARCHAR(60),
-	roi TEXT
-);
 
--- один ко многим
-
-CREATE TABLE IF NOT EXISTS Course (
+CREATE TABLE IF NOT EXISTS artists (
 	id SERIAL PRIMARY KEY,
-	name VARCHAR(60) NOT NULL,
-	description TEXT
+	artists_name VARCHAR(60) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS HomeworkTask (
+
+
+CREATE TABLE IF NOT EXISTS genres_artists (
+	genres_id INTEGER REFERENCES genres(id),
+	artists_id INTEGER REFERENCES artists(id),
+	CONSTRAINT pk_genres_artists PRIMARY KEY (genres_id, artists_id)
+);
+
+
+
+CREATE TABLE IF NOT EXISTS albums (
 	id SERIAL PRIMARY KEY,
-	course_id INTEGER NOT NULL REFERENCES Course(id),
-	number INTEGER NOT NULL,
-	description TEXT NOT NULL
+	album_name VARCHAR(60) NOT NULL,
+	album_data INTEGER
 );
 
--- многие ко многим (1 вариант)
 
-CREATE TABLE IF NOT EXISTS CourseStudent (
-	course_id INTEGER REFERENCES Course(id),
-	student_id INTEGER REFERENCES Student(id),
-	CONSTRAINT pk PRIMARY KEY (course_id, student_id)
+
+CREATE TABLE IF NOT EXISTS artists_albums (
+	artists_id INTEGER REFERENCES artists(id),
+	album_id INTEGER REFERENCES albums(id),
+	CONSTRAINT pk_artists_albums PRIMARY KEY (artists_id, album_id)
 );
 
--- многие ко многим (2 вариант)
 
-CREATE TABLE IF NOT EXISTS HomeworkSolution (
+CREATE TABLE IF NOT EXISTS tracks (
 	id SERIAL PRIMARY KEY,
-	task_id INTEGER NOT NULL REFERENCES HomeworkTask(id),
-	student_id INTEGER NOT NULL REFERENCES Student(id),
-	solution TEXT NOT NULL
+	track_name VARCHAR(80) NOT NULL,
+	track_duration TIME,
+	album_id INTEGER REFERENCES albums(id)
+);
+
+
+CREATE TABLE IF NOT EXISTS collection (
+	id SERIAL PRIMARY KEY,
+	сollection_name VARCHAR(80) NOT NULL,
+	сollection_date INTEGER
+);
+
+
+CREATE TABLE IF NOT EXISTS tracks_collection (
+	tracks_id INTEGER REFERENCES tracks(id),
+	collection_id INTEGER REFERENCES collection(id),
+	CONSTRAINT pk_tracks_collection PRIMARY KEY (tracks_id, collection_id)
 );
