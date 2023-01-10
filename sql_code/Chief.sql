@@ -1,15 +1,7 @@
-CREATE TABLE IF NOT EXISTS chief (
+CREATE TABLE IF NOT EXISTS employees (
 	id SERIAL PRIMARY KEY,
-	name VARCHAR(40) NOT NULL,
+	employee VARCHAR(40) NOT NULL,
+	chief VARCHAR(40) UNIQUE,
 	department varchar(100)
 );
-
-
-CREATE TABLE IF NOT EXISTS employee (
-	id SERIAL PRIMARY KEY,
-	name VARCHAR(40) NOT NULL,
-	department varchar(100),
-	chief INTEGER NOT NULL REFERENCES chief(id)
-);
-
 
