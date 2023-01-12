@@ -1,7 +1,4 @@
---INSERT INTO artists(artists_name)
---VALUES('rammstein');
-
---DELETE FROM artists;
+--TRUNCATE artists, genres, albums, tracks, collection, genres_artists, artists_albums, tracks_collection CASCADE;
 
 
 INSERT INTO artists
@@ -41,47 +38,45 @@ VALUES (1, 'Mutter', 2019),
 	(15, 'The Greatest Hits', 2020),
 	(16, '100 Лучших Произведений', 2019);
 
-
 INSERT INTO tracks
-VALUES (1, 'Sonne', 4:33, 1),
-	(2, 'Ich will', 3:37, 1),
-	(3, 'Links 2 3 4', 3:37, 1),
-	(4, 'Engel', 4:25, 2),
-	(5, 'Stripped', 4:26, 2),
-	(6, 'Du Hast', 3:55, 2),
-	(7, 'Like a Virgin', 3:39, 3),
-	(8, 'Over and Over', 4:12, 3),
-	(9, 'Nobodys Perfect', 4:59, 4),
-	(10, 'What It Feels Like for a Girl', 4:44, 4),
-	(11, 'Funky Shit', 5:16, 5),
-	(12, 'Smack My Bitch Up', 5:43, 5),
-	(13, 'Mindfields', 5:40, 5),
-	(14, 'Voodoo People', 3:46, 6),
-	(15, 'Their Law (Live)', 5:29, 6),
-	(16, 'Место для шага вперёд', 3:40, 7),
-	(17, 'Звезда по имени Солнце', 3:46, 7),
-	(18, 'Пачка сигарет', 4:29, 7),
-	(19, 'Мама Анархия', 2:47, 8),
-	(20, 'Последний герой', 2:17, 8),
-	(21, 'Soldier', 3:47, 9),
-	(22, 'Say What You Say', 5:10, 9),
-	(23, 'My Name Is [Explicit]', 4:29, 10),
-	(24, 'Im Shady', 3:32, 10),
-	(25, 'If I Had', 4:05, 10),
-	(26, 'Волшебник-недоучка', 3:22, 11),
-	(27, 'Всё могут короли', 3:05, 11),
-	(28, 'Женщина, которая поёт', 4:15, 11),
-	(29, 'Улетай, туча', 4:58, 12),
-	(30, 'Ты возьми меня с собой', 2:50, 12),
-	(31, 'Les Champs-Élysées', 2:39, 13),
-	(32, 'Le Petit Pain au chocolat', 3:22, 13),
-	(33, 'Le café des trois colombes', 4:00, 14),
-	(34, 'À toi', 4:33, 14),
-	(35, 'Воздух на струне соль', 5:42, 15),
-	(36, 'Fugue in G minor', 3:15, 15),
-	(37, 'Токката и фуга', 9:09, 16),
-	(38, 'Бранденбургские концерты', 4:03, 16);
-
+VALUES (1, 'Sonne', '4:33', 1),
+	(2, 'Ich will', '3:37', 1),
+	(3, 'Links 2 3 4', '3:37', 1),
+	(4, 'Engel', '4:25', 2),
+	(5, 'Stripped', '4:26', 2),
+	(6, 'Du Hast', '3:55', 2),
+	(7, 'Like a Virgin', '3:39', 3),
+	(8, 'Over and Over', '4:12', 3),
+	(9, 'Nobodys Perfect', '4:59', 4),
+	(10, 'What It Feels Like for a Girl', '4:44', 4),
+	(11, 'Funky Shit', '5:16', 5),
+	(12, 'Smack My Bitch Up', '5:43', 5),
+	(13, 'Mindfields', '5:40', 5),
+	(14, 'Voodoo People', '3:46', 6),
+	(15, 'Their Law (Live)', '5:29', 6),
+	(16, 'Место для шага вперёд', '3:40', 7),
+	(17, 'Звезда по имени Солнце', '3:46', 7),
+	(18, 'Пачка сигарет', '4:29', 7),
+	(19, 'Мама Анархия', '2:47', 8),
+	(20, 'Последний герой', '2:17', 8),
+	(21, 'Soldier', '3:47', 9),
+	(22, 'Say What You Say', '5:10', 9),
+	(23, 'My Name Is [Explicit]', '4:29', 10),
+	(24, 'Im Shady', '3:32', 10),
+	(25, 'If I Had', '4:05', 10),
+	(26, 'Волшебник-недоучка', '3:22', 11),
+	(27, 'Всё могут короли', '3:05', 11),
+	(28, 'Женщина, которая поёт', '4:15', 11),
+	(29, 'Улетай, туча', '4:58', 12),
+	(30, 'Ты возьми меня с собой', '2:50', 12),
+	(31, 'Les Champs-Élysées', '2:39', 13),
+	(32, 'Le Petit Pain au chocolat', '3:22', 13),
+	(33, 'Le café des trois colombes', '4:00', 14),
+	(34, 'À toi', '4:33', 14),
+	(35, 'Воздух на струне соль', '5:42', 15),
+	(36, 'Fugue in G minor', '3:15', 15),
+	(37, 'Токката и фуга', '9:09', 16),
+	(38, 'Бранденбургские концерты', '4:03', 16);
 
 INSERT INTO collection
 VALUES (1, 'Europe', 2011),
@@ -93,7 +88,6 @@ VALUES (1, 'Europe', 2011),
 	(7, 'Dance', 2014),
 	(8, 'Only Music', 2007);
 
-
 INSERT INTO genres_artists
 VALUES (1, 1),
 	(2, 2),
@@ -103,7 +97,6 @@ VALUES (1, 1),
 	(2, 6),
 	(6, 7),
 	(7, 8);
-
 
 INSERT INTO artists_albums
 VALUES (1, 1),
@@ -122,7 +115,6 @@ VALUES (1, 1),
 	(7, 14),
 	(8, 15),
 	(8, 16);
-
 
 INSERT INTO tracks_collection
 VALUES (2, 1),
