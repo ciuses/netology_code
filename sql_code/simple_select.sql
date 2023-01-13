@@ -13,7 +13,7 @@ LIMIT 1;
 
 SELECT track_name
 FROM tracks
-WHERE track_duration > '3:30';
+WHERE track_duration > '00:3:30';
 
 SELECT сollection_name
 FROM collection
