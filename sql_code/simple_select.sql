@@ -2,13 +2,18 @@ SELECT album_name, album_data
 FROM albums
 WHERE album_data = 2018;
 
+--SELECT track_name, track_duration
+--FROM tracks
+--WHERE track_duration = (SELECT max(track_duration) FROM tracks);
+
 SELECT track_name, track_duration
 FROM tracks
-WHERE track_duration = (SELECT max(track_duration) FROM tracks);
+ORDER BY track_duration DESC
+LIMIT 1;
 
 SELECT track_name
 FROM tracks
-WHERE track_duration > '3:50';
+WHERE track_duration > '3:30';
 
 SELECT сollection_name
 FROM collection
@@ -22,6 +27,10 @@ FROM artists
 WHERE artists_name NOT LIKE '% %';
 
 
+--SELECT track_name
+--FROM tracks
+--WHERE track_name LIKE '%My%' OR track_name LIKE '%ма%';
+
 SELECT track_name
 FROM tracks
-WHERE track_name LIKE '%My%' OR track_name LIKE '%ма%';
+WHERE string_to_array(lower(track_name), ' ') && ARRAY['my', 'a'];
