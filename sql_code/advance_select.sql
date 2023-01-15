@@ -33,7 +33,14 @@ LEFT JOIN tracks_collection tc ON tc.tracks_id = tr.id
 LEFT JOIN collection col ON col.id = tc.collection_id
 WHERE artists_name = 'rammstein';
 
--- пропустил запрос
+SELECT album_name, count(ga.genres_id)
+FROM genres gen
+FULL JOIN genres_artists ga ON gen.id = ga.genres_id
+FULL JOIN artists art ON ga.artists_id = art.id
+FULL JOIN artists_albums aa ON aa.artists_id = art.id
+FULL JOIN albums al ON al.id = aa.album_id
+GROUP BY album_name
+HAVING count(ga.genres_id) > 1;
 
 SELECT track_name
 FROM collection col
@@ -73,15 +80,24 @@ FROM genres gen
 LEFT JOIN genres_artists ga ON gen.id = ga.genres_id
 GROUP BY genres_name
 HAVING count(genres_id) > 1;
+--
+--SELECT album_name, artists_name, genres_name, count(ga.genres_id)
+--FROM genres gen
+--FULL JOIN genres_artists ga ON gen.id = ga.genres_id
+--FULL JOIN artists art ON ga.artists_id = art.id
+--FULL JOIN artists_albums aa ON aa.artists_id = art.id
+--FULL JOIN albums al ON al.id = aa.album_id
+--GROUP BY album_name, artists_name, genres_name, ga.genres_id;
+--HAVING count(ga.genres_id) >= 1;
 
-SELECT count(ga.genres_id), album_name
+SELECT album_name, count(ga.genres_id)
 FROM genres gen
 FULL JOIN genres_artists ga ON gen.id = ga.genres_id
-FULL JOIN artists art ON art.id = ga.artists_id
+FULL JOIN artists art ON ga.artists_id = art.id
 FULL JOIN artists_albums aa ON aa.artists_id = art.id
 FULL JOIN albums al ON al.id = aa.album_id
-GROUP BY ga.genres_id, album_name
-HAVING count(ga.genres_id) >= 2;
+GROUP BY album_name
+HAVING count(ga.genres_id) > 1;
 
 
 
