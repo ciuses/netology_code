@@ -49,7 +49,11 @@ def create_tables(connect: object):
 
     connect.commit() # TODO дописать какие нить принты
 
-
+def drop_tables(connect: object, table_name: str):
+    '''Удаляет таблицы перданные в аргумете table_name.'''
+    with connect.cursor() as cursor:
+        cursor.execute(f"""DROP TABLE {table_name};""")
+    connect.commit()
 
 
 if __name__ == '__main__':
@@ -61,6 +65,9 @@ if __name__ == '__main__':
                               password='hanson')
 
     create_tables(my_con)
+
+    # drop_tables(my_con, 'phone_numbers')
+    # drop_tables(my_con, 'clients')
 
     my_con.close()
 
