@@ -1,24 +1,25 @@
 --DROP TABLE phone_numbers;
 --DROP TABLE clients;
 
---CREATE TABLE IF NOT EXISTS clients (
---	id SERIAL PRIMARY KEY,
---	first_name VARCHAR(60) NOT NULL,
---	last_name VARCHAR(80) NOT NULL,
---	email VARCHAR(255) NOT NULL
---);
---
---
---CREATE TABLE IF NOT EXISTS phone_numbers (
---	phone_id INTEGER REFERENCES clients(id),
---	phone_number VARCHAR(20)
---);
+CREATE TABLE IF NOT EXISTS clients (
+	id SERIAL PRIMARY KEY,
+	first_name VARCHAR(60) NOT NULL,
+	last_name VARCHAR(80) NOT NULL,
+	email VARCHAR(255) NOT NULL
+);
 
+
+CREATE TABLE IF NOT EXISTS phone_numbers (
+	phone_id INTEGER REFERENCES clients(id),
+	phone_number VARCHAR(20)
+);
+
+--TRUNCATE clients, phone_numbers CASCADE;
 
 INSERT INTO clients
-VALUES (1, 'Фёдор', 'Дядя', 'fedor@df_sity.com'),
-	(2, 'Матроскин', 'Кот', 'matroskin@df_sity.com'),
-	(3, 'Шарик', 'Пёс', 'sharick@df_sity.com'),
+VALUES (1, 'Фёдор', 'Дядя', 'fedor@df_city.com'),
+	(2, 'Матроскин', 'Кот', 'matroskin@df_city.com'),
+	(3, 'Шарик', 'Пёс', 'sharick@df_city.com'),
 	(4, 'Галчёнок', 'Кто Там','jackdaw@village.com'),
 	(5, 'Игорь Иванович', 'Печкин', 'pechkin@village.com');
 
