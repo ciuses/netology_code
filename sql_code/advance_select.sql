@@ -41,6 +41,7 @@ FULL JOIN albums al ON al.id = aa.album_id
 GROUP BY album_name
 HAVING count(ga.genres_id) > 1;
 
+
 SELECT track_name
 FROM collection col
 FULL JOIN tracks_collection tc ON col.id = tc.collection_id
