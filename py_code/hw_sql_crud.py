@@ -28,24 +28,28 @@ import psycopg2
 #
 # conn.close()
 
-def create_tables(cursor: object):
+def create_tables(connect: object):
     '''Создаёт таблицеу clients и phone_numbers.'''
 
-    cursor.execute("""
-                CREATE TABLE IF NOT EXISTS clients (
-                id SERIAL PRIMARY KEY,
-                first_name VARCHAR(60) NOT NULL,
-                last_name VARCHAR(80) NOT NULL,
-                email VARCHAR(255) NOT NULL);
-                """)
+    with connect.cursor() as cursor:
 
-    cursor.execute("""
-                CREATE TABLE IF NOT EXISTS phone_numbers (
-                phone_id INTEGER REFERENCES clients(id),
-                phone_number VARCHAR(20));
-                """)
+        cursor.execute("""
+                    CREATE TABLE IF NOT EXISTS clients (
+                    id SERIAL PRIMARY KEY,
+                    first_name VARCHAR(60) NOT NULL,
+                    last_name VARCHAR(80) NOT NULL,
+                    email VARCHAR(255) NOT NULL);
+                    """)
 
-    cursor.commit()
+        cursor.execute("""
+                    CREATE TABLE IF NOT EXISTS phone_numbers (
+                    phone_id INTEGER REFERENCES clients(id),
+                    phone_number VARCHAR(20));
+                    """)
+
+    connect.commit() # TODO дописать какие нить принты
+
+
 
 
 if __name__ == '__main__':
@@ -56,7 +60,8 @@ if __name__ == '__main__':
                               user='postgres',
                               password='hanson')
 
-    with my_con.cursor() as curs:
-        create_tables(curs)
+    create_tables(my_con)
 
     my_con.close()
+
+
