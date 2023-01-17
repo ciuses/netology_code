@@ -1,32 +1,5 @@
 import psycopg2
-
-
-# def create_db(conn):
-#     pass
-#
-# def add_client(conn, first_name, last_name, email, phones=None):
-#     pass
-#
-# def add_phone(conn, client_id, phone):
-#     pass
-#
-# def change_client(conn, client_id, first_name=None, last_name=None, email=None, phones=None):
-#     pass
-#
-# def delete_phone(conn, client_id, phone):
-#     pass
-#
-# def delete_client(conn, client_id):
-#     pass
-#
-# def find_client(conn, first_name=None, last_name=None, email=None, phone=None):
-#     pass
-#
-#
-# with psycopg2.connect(database="clients_db", user="postgres", password="postgres") as conn:
-#     pass  # вызывайте функции здесь
-#
-# conn.close()
+from tokenators import password_db_clients as pas
 
 def drop_tables(connect: object, table_name: str):
     '''Удаляет таблицы перданные в аргумете table_name.'''
@@ -55,7 +28,7 @@ def create_tables(connect: object):
                     phone_number VARCHAR(20));
                     """)
 
-    connect.commit()  # TODO дописать какие нить принты
+    connect.commit()
 
 
 def add_new_client(connect: object, f_name: str, l_name: str, email: str, phone: str = None):
@@ -187,7 +160,7 @@ if __name__ == '__main__':
                               port='5432',
                               database='clients',
                               user='postgres',
-                              password='hanson')
+                              password=pas)
 
     # drop_tables(my_con, 'phone_numbers')
     # drop_tables(my_con, 'clients')
