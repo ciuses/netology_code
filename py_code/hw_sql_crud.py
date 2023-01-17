@@ -57,7 +57,7 @@ def create_tables(connect: object):
 
 
 def add_new_client(connect: object, f_name: str, l_name: str, email: str, phone: str=None):
-    '''Добавляет клиента, можно без телофона'''
+    '''Добавляет клиента, можно без телефона.'''
 
     if phone == None:
 
@@ -73,31 +73,57 @@ def add_new_client(connect: object, f_name: str, l_name: str, email: str, phone:
 
             cursor.execute("""
                         INSERT INTO clients(first_name, last_name, email)
-                        VALUES (%s, %s, %s) RETURNING id;
-                        """, (f_name, l_name, email))
+                        VALUES (%s, %s, %s) RETURNING id;""", (f_name, l_name, email))
 
             id_for_link_phone = cursor.fetchone()[0]
 
             cursor.execute("""
                         INSERT INTO phone_numbers
-                        VALUES (%s, %s);
-                        """, (id_for_link_phone, phone))
+                        VALUES (%s, %s);""", (id_for_link_phone, phone))
 
     connect.commit()
 
 
 def add_phone(connect: object, client_id: int, phone: str):
-    '''Создаёт запись в табле телефонов с айди существющего клента.'''
+    '''Создаёт запись в табле телефонов с айди существющего клиента.'''
 
     with connect.cursor() as cursor:
 
         cursor.execute("""
                     INSERT INTO phone_numbers
-                    VALUES (%s, %s);
-                    """, (client_id, phone))
+                    VALUES (%s, %s);""", (client_id, phone))
+
+    connect.commit()
+
+def change_client_data(connect: object, client_id: int, f_name: str=None, l_name: str=None, email: str=None, phone: str=None):
+
+    if f_name:
+
+        with connect.cursor() as cursor:
+
+            cursor.execute("""UPDATE clients SET first_name=%s WHERE id=%s;""", (f_name, client_id))
+
+    if l_name:
+
+        with connect.cursor() as cursor:
+
+            cursor.execute("""UPDATE clients SET last_name=%s WHERE id=%s;""", (l_name, client_id))
+
+    if email:
+
+        with connect.cursor() as cursor:
+
+            cursor.execute("""UPDATE clients SET email=%s WHERE id=%s;""", (email, client_id))
+
+    if phone:
+
+        with connect.cursor() as cursor:
+
+            cursor.execute("""UPDATE phone_numbers SET phone_number=%s WHERE phone_id=%s;""", (phone, client_id))
 
 
     connect.commit()
+
 
 
 if __name__ == '__main__':
@@ -121,7 +147,13 @@ if __name__ == '__main__':
     # add_new_client(my_con, 'Игорь Иванович', 'Печкин', 'pechkin@village.com', '79049019559')
 
     # add_phone(my_con, 16, '79019011111')
-    add_phone(my_con, 16, '79019013333')
+    # add_phone(my_con, 16, '79019013333')
+
+    change_client_data(my_con, 18,
+                       f_name='Шароид',
+                       l_name='Пёсинатор',
+                       email='kill_them_all@destroy.com',
+                       phone='22222222222')
 
 
 
