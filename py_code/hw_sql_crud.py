@@ -30,15 +30,17 @@ import psycopg2
 
 def drop_tables(connect: object, table_name: str):
     '''Удаляет таблицы перданные в аргумете table_name.'''
+
     with connect.cursor() as cursor:
         cursor.execute(f"""DROP TABLE {table_name};""")
+
     connect.commit()
+
 
 def create_tables(connect: object):
     '''Создаёт таблицеу clients и phone_numbers.'''
 
     with connect.cursor() as cursor:
-
         cursor.execute("""
                     CREATE TABLE IF NOT EXISTS clients (
                     id SERIAL PRIMARY KEY,
@@ -53,10 +55,10 @@ def create_tables(connect: object):
                     phone_number VARCHAR(20));
                     """)
 
-    connect.commit() # TODO дописать какие нить принты
+    connect.commit()  # TODO дописать какие нить принты
 
 
-def add_new_client(connect: object, f_name: str, l_name: str, email: str, phone: str=None):
+def add_new_client(connect: object, f_name: str, l_name: str, email: str, phone: str = None):
     '''Добавляет клиента, можно без телефона.'''
 
     if phone == None:
@@ -77,9 +79,7 @@ def add_new_client(connect: object, f_name: str, l_name: str, email: str, phone:
 
             id_for_link_phone = cursor.fetchone()[0]
 
-            cursor.execute("""
-                        INSERT INTO phone_numbers
-                        VALUES (%s, %s);""", (id_for_link_phone, phone))
+            cursor.execute("""INSERT INTO phone_numbers VALUES (%s, %s);""", (id_for_link_phone, phone))
 
     connect.commit()
 
@@ -88,52 +88,70 @@ def add_phone(connect: object, client_id: int, phone: str):
     '''Создаёт запись в табле телефонов с айди существющего клиента.'''
 
     with connect.cursor() as cursor:
-
-        cursor.execute("""
-                    INSERT INTO phone_numbers
-                    VALUES (%s, %s);""", (client_id, phone))
+        cursor.execute("""INSERT INTO phone_numbers VALUES (%s, %s);""", (client_id, phone))
 
     connect.commit()
 
-def change_client_data(connect: object, client_id: int, f_name: str=None, l_name: str=None, email: str=None, phone: str=None):
+
+def change_client_data(connect: object, client_id: int, f_name: str = None, l_name: str = None, email: str = None,
+                       phone: str = None):
+    '''Изменяет данные клиента, обязательны 2 аргумента: соединение и айди клиента.'''
 
     if f_name:
-
         with connect.cursor() as cursor:
-
             cursor.execute("""UPDATE clients SET first_name=%s WHERE id=%s;""", (f_name, client_id))
 
     if l_name:
-
         with connect.cursor() as cursor:
-
             cursor.execute("""UPDATE clients SET last_name=%s WHERE id=%s;""", (l_name, client_id))
 
     if email:
-
         with connect.cursor() as cursor:
-
             cursor.execute("""UPDATE clients SET email=%s WHERE id=%s;""", (email, client_id))
+
+    if phone:
+        with connect.cursor() as cursor:
+            cursor.execute("""UPDATE phone_numbers SET phone_number=%s WHERE phone_id=%s;""", (phone, client_id))
+
+    connect.commit()
+
+
+def delete_phone(connect: object, client_id: int, phone: str = None):
+    '''Удаляет запись в табле телефонов по айди, но можно и по номеру.'''
 
     if phone:
 
         with connect.cursor() as cursor:
 
-            cursor.execute("""UPDATE phone_numbers SET phone_number=%s WHERE phone_id=%s;""", (phone, client_id))
+            cursor.execute("""DELETE FROM phone_numbers WHERE phone_number=%s;""", (phone,))
 
+        connect.commit()
+
+
+    else:
+
+        with connect.cursor() as cursor:
+
+            cursor.execute("""DELETE FROM phone_numbers WHERE phone_id=%s;""", (client_id,))
+
+        connect.commit()
+
+
+def delete_client(connect: object, client_id: int):
+    '''Удаляет клента по айди.'''
+
+    with connect.cursor() as cursor:
+        cursor.execute("""DELETE FROM clients WHERE id=%s;""", (client_id,))
 
     connect.commit()
 
 
-
 if __name__ == '__main__':
-
     my_con = psycopg2.connect(host='172.16.5.25',
                               port='5432',
                               database='clients',
                               user='postgres',
                               password='hanson')
-
 
     # drop_tables(my_con, 'phone_numbers')
     # drop_tables(my_con, 'clients')
@@ -149,14 +167,15 @@ if __name__ == '__main__':
     # add_phone(my_con, 16, '79019011111')
     # add_phone(my_con, 16, '79019013333')
 
-    change_client_data(my_con, 18,
-                       f_name='Шароид',
-                       l_name='Пёсинатор',
-                       email='kill_them_all@destroy.com',
-                       phone='22222222222')
+    # change_client_data(my_con, 18,
+    #                    f_name='Шароид',
+    #                    l_name='Пёсинатор',
+    #                    email='kill_them_all@destroy.com',
+    #                    phone='22222222222')
 
-
+    # add_phone(my_con, 17, '79019013333')
+    # change_client_data(my_con, 17, phone='33333333333')
+    # delete_phone(my_con, 17, phone='33333333333')
+    delete_client(my_con, 20)
 
     my_con.close()
-
-
