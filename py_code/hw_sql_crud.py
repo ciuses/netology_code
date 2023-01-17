@@ -120,18 +120,14 @@ def delete_phone(connect: object, client_id: int, phone: str = None):
     '''Удаляет запись в табле телефонов по айди, но можно и по номеру.'''
 
     if phone:
-
         with connect.cursor() as cursor:
-
             cursor.execute("""DELETE FROM phone_numbers WHERE phone_number=%s;""", (phone,))
 
         connect.commit()
 
 
     else:
-
         with connect.cursor() as cursor:
-
             cursor.execute("""DELETE FROM phone_numbers WHERE phone_id=%s;""", (client_id,))
 
         connect.commit()
@@ -144,6 +140,46 @@ def delete_client(connect: object, client_id: int):
         cursor.execute("""DELETE FROM clients WHERE id=%s;""", (client_id,))
 
     connect.commit()
+
+
+def find_client(connect: object, f_name: str = None, l_name: str = None, email: str = None, phone: str = None) -> list:
+    '''Поиск клента по Имени, Фамилии, мылу и телефону.'''
+
+    if f_name:
+        with connect.cursor() as cursor:
+            cursor.execute("""
+                        SELECT *
+                        FROM clients
+                        FULL JOIN phone_numbers ON id = phone_id
+                        WHERE first_name=%s;""", (f_name,))
+            return cursor.fetchall()
+
+    elif l_name:
+        with connect.cursor() as cursor:
+            cursor.execute("""
+                        SELECT *
+                        FROM clients
+                        FULL JOIN phone_numbers ON id = phone_id
+                        WHERE last_name=%s;""", (l_name,))
+            return cursor.fetchall()
+
+    elif email:
+        with connect.cursor() as cursor:
+            cursor.execute("""
+                        SELECT *
+                        FROM clients
+                        FULL JOIN phone_numbers ON id = phone_id
+                        WHERE email=%s;""", (email,))
+            return cursor.fetchall()
+
+    elif phone:
+        with connect.cursor() as cursor:
+            cursor.execute("""
+                        SELECT *
+                        FROM clients
+                        FULL JOIN phone_numbers ON id = phone_id
+                        WHERE phone_number=%s;""", (phone,))
+            return cursor.fetchall()
 
 
 if __name__ == '__main__':
@@ -175,7 +211,13 @@ if __name__ == '__main__':
 
     # add_phone(my_con, 17, '79019013333')
     # change_client_data(my_con, 17, phone='33333333333')
+
     # delete_phone(my_con, 17, phone='33333333333')
-    delete_client(my_con, 20)
+    # delete_client(my_con, 20)
+
+    # print(find_client(my_con, f_name='Фёдор'))
+    print(find_client(my_con, phone='79019011111'))
+    print(find_client(my_con, email='jackdaw@village.com'))
+    print(find_client(my_con, l_name='Пёсинатор'))
 
     my_con.close()
