@@ -1,28 +1,7 @@
 import sqlalchemy as alch
-from sqlalchemy.orm import declarative_base, relationship, sessionmaker
+from sqlalchemy.orm import declarative_base, relationship
 
 Base = declarative_base()
-
-
-# class Course(Base):
-#     __tablename__ = "course"
-#
-#     id = alch.Column(alch.Integer, primary_key=True)
-#     name = alch.Column(alch.String(length=40), unique=True)
-#
-#     # homeworks = relationship("Homework", back_populates="course")
-#
-#
-# class Homework(Base):
-#     __tablename__ = "homework"
-#
-#     id = alch.Column(alch.Integer, primary_key=True)
-#     number = alch.Column(alch.Integer, nullable=False)
-#     description = alch.Column(alch.Text, nullable=False)
-#     course_id = alch.Column(alch.Integer, alch.ForeignKey("course.id"), nullable=False)
-#
-#     # course = relationship(Course, back_populates="homeworks")
-#     course = relationship(Course, backref="homeworks")
 
 
 class Publisher(Base):
@@ -70,13 +49,14 @@ class Sale(Base):
     __tablename__ = "sale"
 
     id = alch.Column(alch.Integer, primary_key=True)
-    price = alch.Column(alch.Integer) # TODO Проверить тип данных
-    date_sale = alch.Column(alch.Integer) # TODO Проверить тип данных
+    price = alch.Column(alch.Integer, nullable=False)  # TODO Проверить тип данных
+    date_sale = alch.Column(alch.Integer, nullable=False)  # TODO Проверить тип данных
     id_stock = alch.Column(alch.Integer, alch.ForeignKey("stock.id"), nullable=False)
     count = alch.Column(alch.Integer, nullable=False)
 
     stock = relationship(Stock, backref="sale")
 
 
-
-
+def create_tables(engine):
+    # Base.metadata.drop_all(engine)
+    Base.metadata.create_all(engine)
