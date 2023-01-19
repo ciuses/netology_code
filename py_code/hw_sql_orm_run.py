@@ -34,9 +34,15 @@ new_shop2 = Shop(id=2, name='Книжбургер')
 new_stock1 = Stock(id=1, id_book=1, id_shop=1, count=100)
 new_stock2 = Stock(id=2, id_book=2, id_shop=1, count=500)
 new_stock3 = Stock(id=3, id_book=3, id_shop=2, count=305)
+#
+# my_session.add_all([new_pub1, new_pub2, new_book1, new_book2, new_book3, new_shop1, new_shop2, new_stock1, new_stock2, new_stock3])
+# my_session.commit()
 
-my_session.add_all([new_pub1, new_pub2, new_book1, new_book2, new_book3, new_shop1, new_shop2, new_stock1, new_stock2, new_stock3])
-my_session.commit()
+# вывести данные
+
+print(new_pub1)
+print(new_book2)
+
 
 
 my_session.close()

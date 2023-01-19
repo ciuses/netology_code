@@ -12,6 +12,9 @@ class Publisher(Base):
 
     book = relationship("Book", back_populates="publisher")
 
+    def __str__(self):
+        return f'id={self.id}\nname={self.name}'
+
 
 class Book(Base):
     __tablename__ = "book"
@@ -23,6 +26,9 @@ class Book(Base):
     publisher = relationship("Publisher", back_populates="book")
     stock = relationship("Stock", back_populates="book")
 
+    def __str__(self):
+        return f'id={self.id}\ntitle={self.title}\nid_publisher={self.id_publisher}'
+
 
 class Shop(Base):
     __tablename__ = "shop"
@@ -31,6 +37,9 @@ class Shop(Base):
     name = alch.Column(alch.String(length=80), unique=True)
 
     stock = relationship("Stock", back_populates="shop")
+
+    def __str__(self):
+        return f'id={self.id}\nname={self.name}'
 
 
 class Stock(Base):
@@ -46,6 +55,9 @@ class Stock(Base):
     book = relationship("Book", back_populates="stock")
     sale = relationship("Sale", back_populates="stock")
 
+    def __str__(self):
+        return f'id={self.id}\nid_book={self.id_book}\nid_shop={self.id_shop}\ncount={self.count}'
+
 
 class Sale(Base):
     __tablename__ = "sale"
@@ -58,7 +70,10 @@ class Sale(Base):
 
     stock = relationship("Stock", back_populates="sale")
 
+    def __str__(self):
+        return f'id={self.id}\nprice={self.price}\ndate_sale={self.date_sale}\nid_stock={self.id_stock}\ncount={self.count}'
+
 
 def create_tables(engine):
-    Base.metadata.drop_all(engine)
+    # Base.metadata.drop_all(engine)
     Base.metadata.create_all(engine)
