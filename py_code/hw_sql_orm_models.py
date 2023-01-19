@@ -10,7 +10,7 @@ class Publisher(Base):
     id = alch.Column(alch.Integer, primary_key=True)
     name = alch.Column(alch.String(length=80), unique=True)
 
-    book = relationship("book", back_populates="publisher")
+    book = relationship("Book", back_populates="publisher")
 
 
 class Book(Base):
@@ -20,7 +20,8 @@ class Book(Base):
     title = alch.Column(alch.String(length=255), unique=True)
     id_publisher = alch.Column(alch.Integer, alch.ForeignKey("publisher.id"), nullable=False)
 
-    publisher = relationship(Publisher, backref="book")
+    publisher = relationship("Publisher", back_populates="book")
+    stock = relationship("Stock", back_populates="book")
 
 
 class Shop(Base):
@@ -29,7 +30,7 @@ class Shop(Base):
     id = alch.Column(alch.Integer, primary_key=True)
     name = alch.Column(alch.String(length=80), unique=True)
 
-    stock = relationship("stock", back_populates="shop")
+    stock = relationship("Stock", back_populates="shop")
 
 
 class Stock(Base):
@@ -41,8 +42,9 @@ class Stock(Base):
     count = alch.Column(alch.Integer, nullable=False)
 
     # TODO проверить правильные ли связи
-    book = relationship(Book, backref="stock")
-    shop = relationship(Shop, backref="stock")
+    shop = relationship("Shop", back_populates="stock")
+    book = relationship("Book", back_populates="stock")
+    sale = relationship("Sale", back_populates="stock")
 
 
 class Sale(Base):
@@ -54,9 +56,9 @@ class Sale(Base):
     id_stock = alch.Column(alch.Integer, alch.ForeignKey("stock.id"), nullable=False)
     count = alch.Column(alch.Integer, nullable=False)
 
-    stock = relationship(Stock, backref="sale")
+    stock = relationship("Stock", back_populates="sale")
 
 
 def create_tables(engine):
-    # Base.metadata.drop_all(engine)
+    Base.metadata.drop_all(engine)
     Base.metadata.create_all(engine)
