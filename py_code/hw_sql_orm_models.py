@@ -8,7 +8,7 @@ class Publisher(Base):
     __tablename__ = "publisher"
 
     id = alch.Column(alch.Integer, primary_key=True)
-    name = alch.Column(alch.String(length=40), unique=True)
+    name = alch.Column(alch.String(length=80), unique=True)
 
     book = relationship("book", back_populates="publisher")
 
@@ -17,7 +17,7 @@ class Book(Base):
     __tablename__ = "book"
 
     id = alch.Column(alch.Integer, primary_key=True)
-    title = alch.Column(alch.String(length=40), unique=True)
+    title = alch.Column(alch.String(length=255), unique=True)
     id_publisher = alch.Column(alch.Integer, alch.ForeignKey("publisher.id"), nullable=False)
 
     publisher = relationship(Publisher, backref="book")
@@ -27,7 +27,7 @@ class Shop(Base):
     __tablename__ = "shop"
 
     id = alch.Column(alch.Integer, primary_key=True)
-    name = alch.Column(alch.String(length=40), unique=True)
+    name = alch.Column(alch.String(length=80), unique=True)
 
     stock = relationship("stock", back_populates="shop")
 
