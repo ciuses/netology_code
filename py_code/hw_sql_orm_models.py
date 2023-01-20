@@ -62,8 +62,8 @@ class Sale(Base):
     __tablename__ = "sale"
 
     id = alch.Column(alch.Integer, primary_key=True)
-    price = alch.Column(alch.Integer, nullable=False)
-    date_sale = alch.Column(alch.Integer, nullable=False)
+    price = alch.Column(alch.Float, nullable=False)
+    date_sale = alch.Column(alch.DateTime, nullable=False)
     id_stock = alch.Column(alch.Integer, alch.ForeignKey("stock.id"), nullable=False)
     count = alch.Column(alch.Integer, nullable=False)
 
@@ -74,5 +74,5 @@ class Sale(Base):
 
 
 def create_tables(engine):
-    # Base.metadata.drop_all(engine)
+    Base.metadata.drop_all(engine)
     Base.metadata.create_all(engine)
