@@ -30,22 +30,20 @@ new_stock3 = Stock(id=3, id_book=3, id_shop=2, count=305)
 # my_session.add_all([new_pub1, new_pub2, new_book1, new_book2, new_book3, new_shop1, new_shop2, new_stock1, new_stock2, new_stock3])
 # my_session.commit()
 
-# вывести данные
-# print(new_pub1)
-# print(new_book2)
 
-# for boo in my_session.query(Book).all():
-#     print(boo)
-# for re in my_session.query(Book).join(Publisher.book).filter(Book.title == 'Бизли Д., Джонс Б. К. "Python. Книга рецептов.'):
-#     print(re)
-# работает
-# for re in my_session.query(Book, Book.title).join(Publisher.book).filter(Publisher.id == 1):
-#     print(re[1])
-# for re in my_session.query(Book, Book.title).join(Publisher.book).filter(Publisher.name == 'ДМК Пресс'):
-#     print(re[1])
+search_term = input('Введите критерий для поиска "название" издательства или его "айди": ').lower()
 
-for re in my_session.query(Shop, Shop.name).join(Stock.shop, Stock.book, Book.publisher).filter(Publisher.name == 'ДМК Пресс'):
-    print(re[1])
+if search_term == 'название':
+    publishing_house = input('Введите название издательства c учетом регистра: ')
+    for re in my_session.query(Shop, Shop.name).join(Stock.shop, Stock.book, Book.publisher).filter(Publisher.name == publishing_house):
+        print(re[1])
+
+elif search_term == 'айди':
+    id_publishing_house = int(input('Введите айди издательства: '))
+    for re in my_session.query(Shop, Shop.name).join(Stock.shop, Stock.book, Book.publisher).filter(Publisher.id == id_publishing_house):
+        print(re[1])
+
+
 
 
 my_session.close()
