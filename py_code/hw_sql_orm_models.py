@@ -1,6 +1,9 @@
+import os
+
 from tokenators import password_db_clients as pas
 import sqlalchemy as alch
 from sqlalchemy.orm import declarative_base, relationship, sessionmaker
+from dotenv import load_dotenv
 
 Base = declarative_base()
 
@@ -81,7 +84,12 @@ def create_tables(engine):
 
 ############################### Строка подключения и создание движка алхимии
 
-data_source_name = f"postgresql://postgres:{pas}@192.168.56.101:5432/test_hw"
+load_dotenv()
+data_source_name = f"postgresql://{os.getenv('USER')}:" \
+                   f"{os.getenv('PASSWORD')}@" \
+                   f"{os.getenv('HOST')}:" \
+                   f"{os.getenv('PORT')}/" \
+                   f"{os.getenv('DB')}"
 engine = alch.create_engine(data_source_name)
 create_tables(engine)
 
