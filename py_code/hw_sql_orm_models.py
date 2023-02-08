@@ -1,5 +1,6 @@
+from tokenators import password_db_clients as pas
 import sqlalchemy as alch
-from sqlalchemy.orm import declarative_base, relationship
+from sqlalchemy.orm import declarative_base, relationship, sessionmaker
 
 Base = declarative_base()
 
@@ -76,3 +77,16 @@ class Sale(Base):
 def create_tables(engine):
     Base.metadata.drop_all(engine)
     Base.metadata.create_all(engine)
+
+
+############################### Строка подключения и создание движка алхимии
+
+data_source_name = f"postgresql://postgres:{pas}@192.168.56.101:5432/test_hw"
+engine = alch.create_engine(data_source_name)
+create_tables(engine)
+
+############################################# сессия
+
+Session = sessionmaker(bind=engine)
+my_session = Session()
+
