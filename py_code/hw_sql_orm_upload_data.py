@@ -63,6 +63,3 @@ new_stock3 = Stock(id=3, id_book=3, id_shop=2, count=305)
 
 # my_session.add_all([new_pub1, new_pub2, new_book1, new_book2, new_book3, new_shop1, new_shop2, new_stock1, new_stock2, new_stock3])
 # my_session.commit()
-
-
-# data_writer_for_db()

@@ -1,5 +1,5 @@
 from py_code.hw_sql_orm_upload_data import data_writer_for_db
-from hw_sql_orm_models import *
+from hw_sql_orm_models import my_session, Shop, Stock, Book, Publisher
 
 data_writer_for_db()
 
