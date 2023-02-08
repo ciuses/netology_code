@@ -47,7 +47,7 @@ def data_writer_for_db():
 
 ############################### Строка подключения и создание движка алхимии
 
-data_source_name = f"postgresql://postgres:{pas}@172.16.5.24:5432/test_hw"
+data_source_name = f"postgresql://postgres:{pas}@192.168.56.101:5432/test_hw"
 engine = alch.create_engine(data_source_name)
 create_tables(engine)
 
@@ -82,12 +82,20 @@ search_term = input('Введите критерий для поиска "наз
 
 if search_term == 'название':
     publishing_house = input('Введите название издательства c учетом регистра: ')
-    for re in my_session.query(Shop, Shop.name).join(Stock.shop, Stock.book, Book.publisher).filter(Publisher.name == publishing_house):
+    for re in my_session.query(Shop, Shop.name)\
+            .join(Stock, Stock.id_shop == Shop.id)\
+            .join(Book, Book.id == Stock.id_book)\
+            .join(Publisher, Publisher.id == Book.id_publisher)\
+            .filter(Publisher.name == publishing_house):
         print(re[1])
 
 elif search_term == 'айди':
     id_publishing_house = int(input('Введите айди издательства, цифрой: '))
-    for re in my_session.query(Shop, Shop.name).join(Stock.shop, Stock.book, Book.publisher).filter(Publisher.id == id_publishing_house):
+    for re in my_session.query(Shop, Shop.name)\
+            .join(Stock, Stock.id_shop == Shop.id)\
+            .join(Book, Book.id == Stock.id_book)\
+            .join(Publisher, Publisher.id == Book.id_publisher)\
+            .filter(Publisher.id == id_publishing_house):
         print(re[1])
 
 else:
